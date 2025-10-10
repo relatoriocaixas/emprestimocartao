@@ -134,4 +134,62 @@ button#salvarBtn:hover {
     header img.logo {
         height: 40px;
     }
+/* Estoque - cards com cores e efeito metal */
+#estoqueConteudo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Card de cada tipo de cartão */
+.cardEstoque {
+    background: linear-gradient(145deg, #2a2a2a, #232323); /* efeito metal */
+    border-radius: 10px;
+    padding: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cardEstoque:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.8);
+}
+
+/* Título de cada card */
+.cardEstoque h3 {
+    margin: 0 0 8px 0;
+    font-size: 1rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.2); /* brilho sutil */
+}
+
+/* Bordo Digicon */
+.cardEstoque:nth-child(1) h3 {
+    color: #00BFFF; /* azul pastel metálico */
+}
+
+/* Bordo Prodata */
+.cardEstoque:nth-child(2) h3 {
+    color: #FFD700; /* amarelo light metálico */
+}
+
+/* Meia Viagem */
+.cardEstoque:nth-child(3) h3 {
+    color: #FF69B4; /* rosa metálico */
+}
+
+/* Textos de destaque dentro dos cards */
+.cardEstoque p b {
+    color: #FFFFFF; /* branco padrão */
+    text-shadow: 0 0 2px rgba(255,255,255,0.5); /* brilho refletivo */
+}
+
+/* Disponível e Emprestado podem ter cores diferenciadas via JS */
+.cardEstoque p b.disponivel {
+    color: #00FF7F; /* verde metálico para disponível */
+}
+.cardEstoque p b.emprestado {
+    color: #FF5555; /* vermelho metálico para emprestado */
+}
+
 }
