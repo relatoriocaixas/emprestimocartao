@@ -121,19 +121,6 @@ button#salvarBtn:hover {
     display: none;
 }
 
-/* Responsivo */
-@media (max-width: 650px) {
-    form {
-        padding: 15px 20px;
-    }
-
-    header h1 {
-        font-size: 1.5rem;
-    }
-
-    header img.logo {
-        height: 40px;
-    }
 /* Estoque - cards com cores e efeito metal */
 #estoqueConteudo {
     display: flex;
@@ -188,8 +175,22 @@ button#salvarBtn:hover {
 .cardEstoque p b.disponivel {
     color: #00FF7F; /* verde metálico para disponível */
 }
+
 .cardEstoque p b.emprestado {
     color: #FF5555; /* vermelho metálico para emprestado */
 }
 
+/* Responsivo */
+@media (max-width: 650px) {
+    form {
+        padding: 15px 20px;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    header img.logo {
+        height: 40px;
+    }
 }

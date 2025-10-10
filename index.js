@@ -68,9 +68,13 @@
                 });
             }
 
+            // Adiciona classe específica para o título e mantém o layout
+            const classTitulo = tipo === 'digicon' ? 'digiconTitle' :
+                                tipo === 'prodata' ? 'prodataTitle' : 'meiaViagemTitle';
+
             return `
                 <div class="cardEstoque">
-                    <h3>${tipo === 'digicon' ? 'Bordo Digicon' : tipo === 'prodata' ? 'Bordo Prodata' : 'Meia Viagem'}</h3>
+                    <h3 class="${classTitulo}">${tipo === 'digicon' ? 'Bordo Digicon' : tipo === 'prodata' ? 'Bordo Prodata' : 'Meia Viagem'}</h3>
                     <p><b>Disponível:</b> ${disponiveis.length}</p>
                     <p><b>Emprestado:</b> ${emprestados[tipo].length}</p>
                     <p><b>Disponíveis:</b> ${disponiveis.join(', ') || '-'}</p>
