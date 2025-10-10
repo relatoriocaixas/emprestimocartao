@@ -35,10 +35,8 @@ header img.logo {
 }
 
 header h1 {
-flex-grow: 1;
-font-size: 1.8rem;
-color: #00FF7F; /* verde metálico
-text-shadow: 0 0 6px rgba(0,255,127,0.5);
+    font-size: 1.8rem;
+    color: #00B070; /* verde metálico discreto */
 }
 
 header button {
