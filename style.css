@@ -47,7 +47,7 @@ header button {
     border-radius: 6px;
     cursor: pointer;
     background-color: #00ff7f;
-    color: #FFFFFF;
+    color: #1E1E1E;
     transition: 0.3s;
 }
 
@@ -103,7 +103,7 @@ button#salvarBtn {
     border: none;
     border-radius: 10px;
     background-color: #00ff7f;
-    color: #FFFFFF;
+    color: #1E1E1E;
     font-weight: bold;
     font-size: 1.1rem;
     cursor: pointer;
