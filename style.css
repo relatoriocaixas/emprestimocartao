@@ -1,6 +1,4 @@
-﻿/* =============================
-   RESET E BASE
-============================= */
+﻿/* Reset básico */
 * {
     margin: 0;
     padding: 0;
@@ -8,6 +6,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Corpo */
 body {
     background-color: #1E1E1E;
     color: #E0E0E0;
@@ -18,9 +17,7 @@ body {
     padding: 20px;
 }
 
-/* =============================
-   CABEÇALHO GERAL
-============================= */
+/* Cabeçalho */
 header {
     display: flex;
     align-items: center;
@@ -28,17 +25,9 @@ header {
     width: 100%;
     max-width: 900px;
     padding: 15px 20px;
-    background: linear-gradient(145deg, #2c2c2c, #3b3b3b);
-    background-size: 200% 200%;
-    animation: brilhoMetal 6s infinite linear;
+    background-color: #2A2A2A;
     border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
-}
-
-@keyframes brilhoMetal {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
 
 header img.logo {
@@ -47,8 +36,7 @@ header img.logo {
 
 header h1 {
     font-size: 1.8rem;
-    color: #00FF7F;
-    text-shadow: 0 0 10px rgba(0,255,127,0.5);
+    color: #00B070; /* verde metálico discreto */
 }
 
 header button {
@@ -58,11 +46,8 @@ header button {
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    background: linear-gradient(145deg, #00B070, #00D080);
-    background-size: 200% 200%;
-    animation: brilhoMetal 5s infinite linear;
-    color: #111;
-    font-weight: 600;
+    background-color: #00B070;
+    color: #1E1E1E;
     transition: 0.3s;
 }
 
@@ -70,19 +55,18 @@ header button:hover {
     filter: brightness(1.1);
 }
 
-/* =============================
-   FORMULÁRIO (index.html)
-============================= */
+/* Formulário */
 form {
     background-color: #2A2A2A;
     padding: 25px 30px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
     width: 100%;
     max-width: 600px;
     margin-top: 25px;
 }
 
+/* Form groups */
 .form-group {
     margin-bottom: 15px;
     display: flex;
@@ -112,175 +96,32 @@ form {
     box-shadow: 0 0 5px rgba(0,176,112,0.7);
 }
 
-/* =============================
-   BOTÃO SALVAR (index)
-============================= */
-#salvarBtn {
+/* Botão salvar */
+button#salvarBtn {
     padding: 12px;
     width: 100%;
     border: none;
     border-radius: 10px;
-    background: linear-gradient(145deg, #00B070, #00D080);
-    background-size: 200% 200%;
-    animation: brilhoMetal 6s infinite linear;
-    color: #111;
+    background-color: #00B070;
+    color: #1E1E1E;
     font-weight: bold;
     font-size: 1.1rem;
     cursor: pointer;
     transition: 0.3s;
 }
 
-#salvarBtn:hover {
-    filter: brightness(1.15);
+button#salvarBtn:hover {
+    filter: brightness(1.1);
 }
 
-/* =============================
-   ESTOQUE
-============================= */
-#estoque {
-    background-color: #2A2A2A;
-    border-radius: 10px;
-    padding: 15px;
-    color: #E0E0E0;
-    width: 100%;
-    max-width: 900px;
-    margin-top: 25px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+/* Campos dinâmicos */
+#digiconField,
+#prodataField,
+#meiaViagemField {
+    display: none;
 }
 
-#estoque h2 {
-    background: linear-gradient(145deg, #3a3a3a, #4b4b4b);
-    background-size: 200% 200%;
-    animation: brilhoMetal 7s infinite linear;
-    border-radius: 8px;
-    padding: 10px;
-    font-size: 1.3rem;
-    text-align: center;
-    color: #00FF7F;
-    margin-bottom: 10px;
-}
-
-.cardEstoque {
-    background-color: #1E1E1E;
-    border-radius: 10px;
-    padding: 10px 15px;
-    margin-bottom: 12px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.4);
-}
-
-.cardEstoque h3 {
-    margin-bottom: 5px;
-    font-size: 1rem;
-}
-
-.cardEstoque h3:contains("Digicon") {
-    color: #FFD700; /* amarelo */
-}
-
-.cardEstoque h3:contains("Prodata") {
-    color: #7CFC00; /* verde-claro */
-}
-
-.cardEstoque h3:contains("Meia") {
-    color: #00BFFF; /* azul */
-}
-
-.cardEstoque b {
-    font-weight: 600;
-}
-
-.cardEstoque p {
-    margin: 3px 0;
-}
-
-.cardEstoque p b {
-    color: #00ff7f;
-}
-
-.cardEstoque p:has(b:contains("Disponível")) b,
-.cardEstoque p:has(b:contains("Disponíveis")) b {
-    color: #00ff7f; /* verde */
-}
-
-.cardEstoque p:has(b:contains("Emprestado")) b,
-.cardEstoque p:has(b:contains("Emprestados")) b {
-    color: #FFD700; /* amarelo */
-}
-
-/* =============================
-   RELATÓRIO (relatorio.html)
-============================= */
-main {
-    display: flex;
-    gap: 20px;
-    width: 100%;
-    max-width: 1100px;
-}
-
-table {
-    flex: 1;
-    width: 100%;
-    border-collapse: collapse;
-    background: #1f1f1f;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-th, td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #333;
-    font-size: 0.95rem;
-    color: #e0e0e0;
-}
-
-th {
-    background: linear-gradient(145deg, #00B070, #00D080);
-    background-size: 200% 200%;
-    animation: brilhoMetal 6s infinite linear;
-    color: #111;
-}
-
-tr:hover {
-    background-color: #333;
-}
-
-/* =============================
-   BOTÕES RELATÓRIO
-============================= */
-.statusBtn {
-    padding: 6px 12px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    color: #111;
-    font-weight: 600;
-    background: linear-gradient(145deg, #00B070, #00D080);
-    background-size: 200% 200%;
-    animation: brilhoMetal 6s infinite linear;
-}
-
-.exportBtn {
-    margin-bottom: 10px;
-    padding: 10px 18px;
-    background: linear-gradient(145deg, #0984e3, #74b9ff);
-    background-size: 200% 200%;
-    animation: brilhoMetal 7s infinite linear;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: 0.3s;
-}
-
-.exportBtn:hover {
-    filter: brightness(1.15);
-}
-
-/* =============================
-   RESPONSIVO
-============================= */
+/* Responsivo */
 @media (max-width: 650px) {
     form {
         padding: 15px 20px;
@@ -292,9 +133,5 @@ tr:hover {
 
     header img.logo {
         height: 40px;
-    }
-
-    main {
-        flex-direction: column;
     }
 }
