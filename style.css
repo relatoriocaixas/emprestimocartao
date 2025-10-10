@@ -1,6 +1,4 @@
-﻿/* =============================
-   RESET BÁSICO
-============================= */
+﻿/* Reset básico */
 * {
     margin: 0;
     padding: 0;
@@ -8,26 +6,28 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* =============================
-   CORPO
-============================= */
+/* Corpo */
 body {
-    background-color: #121212;
+    background-color: #1E1E1E;
     color: #E0E0E0;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 20px;
 }
 
-/* =============================
-   CABEÇALHO
-============================= */
+/* Cabeçalho */
 header {
     display: flex;
     align-items: center;
     gap: 15px;
     width: 100%;
     max-width: 900px;
-    margin-bottom: 20px;
+    padding: 15px 20px;
+    background-color: #2A2A2A;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
 
 header img.logo {
@@ -35,81 +35,40 @@ header img.logo {
 }
 
 header h1 {
-    flex-grow: 1;
-    font-size: 1.8rem;
-    color: #00FF7F; /* verde metálico */
-    text-shadow: 0 0 6px rgba(0,255,127,0.5);
+flex-grow: 1;
+font-size: 1.8rem;
+color: #00FF7F; /* verde metálico
+text-shadow: 0 0 6px rgba(0,255,127,0.5);
 }
 
 header button {
+    margin-left: auto;
     padding: 8px 14px;
     font-size: 1rem;
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    background: linear-gradient(145deg, #00B070, #00D080);
-    color: #111;
+    background-color: #00B070;
+    color: #1E1E1E;
     transition: 0.3s;
 }
+
 header button:hover {
-    filter: brightness(1.15);
+    filter: brightness(1.1);
 }
 
-/* =============================
-   MAIN
-============================= */
-main {
-    display: flex;
-    gap: 20px;
-}
-
-/* =============================
-   ESTOQUE
-============================= */
-#estoque {
-    width: 260px;
-    background: #1e1e1e;
-    padding: 15px;
-    border-radius: 10px;
-    color: #e0e0e0;
-    height: fit-content;
-}
-
-#estoque h2 {
-    color: #00FF7F;
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-}
-
-.cardEstoque {
-    background: #2a2a2a;
-    border-radius: 8px;
-    padding: 10px;
-    margin-bottom: 10px;
-}
-
-.cardEstoque h3 {
-    margin: 0;
-    font-size: 1rem;
-    /* cores por tipo serão definidas dinamicamente via JS ou atributo data-tipo */
-}
-
-.cardEstoque p {
-    margin: 3px 0;
-    font-size: 0.9rem;
-}
-
-/* =============================
-   FORMULÁRIO
-============================= */
+/* Formulário */
 form {
-    flex: 1;
-    background-color: #1e1e1e;
+    background-color: #2A2A2A;
     padding: 25px 30px;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    width: 100%;
+    max-width: 600px;
+    margin-top: 25px;
 }
 
+/* Form groups */
 .form-group {
     margin-bottom: 15px;
     display: flex;
@@ -139,23 +98,14 @@ form {
     box-shadow: 0 0 5px rgba(0,176,112,0.7);
 }
 
-/* Campos dinâmicos */
-#digiconField,
-#prodataField,
-#meiaViagemField {
-    display: none;
-}
-
-/* =============================
-   BOTÃO SALVAR
-============================= */
+/* Botão salvar */
 button#salvarBtn {
     padding: 12px;
     width: 100%;
     border: none;
     border-radius: 10px;
-    background: linear-gradient(145deg, #00B070, #00D080);
-    color: #111;
+    background-color: #00B070;
+    color: #1E1E1E;
     font-weight: bold;
     font-size: 1.1rem;
     cursor: pointer;
@@ -163,76 +113,17 @@ button#salvarBtn {
 }
 
 button#salvarBtn:hover {
-    filter: brightness(1.15);
+    filter: brightness(1.1);
 }
 
-/* =============================
-   RELATÓRIO
-============================= */
-table {
-    flex: 1;
-    width: 100%;
-    border-collapse: collapse;
-    background: #1f1f1f;
-    border-radius: 8px;
-    overflow: hidden;
+/* Campos dinâmicos */
+#digiconField,
+#prodataField,
+#meiaViagemField {
+    display: none;
 }
 
-th, td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #333;
-    font-size: 0.95rem;
-    color: #E0E0E0;
-}
-
-th {
-    background: linear-gradient(145deg, #00B070, #00D080);
-    color: #111;
-}
-
-tr:hover {
-    background-color: #333;
-}
-
-.statusBtn {
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    color: #111;
-    background: linear-gradient(145deg, #00B070, #00D080);
-    transition: 0.3s;
-}
-
-.statusBtn:hover {
-    filter: brightness(1.15);
-}
-
-.exportBtn {
-    margin-bottom: 10px;
-    padding: 8px 15px;
-    background: linear-gradient(145deg, #0984e3, #74b9ff);
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.exportBtn:hover {
-    filter: brightness(1.15);
-}
-
-/* Matriculas com cores por quantidade */
-td.matricula {
-    font-weight: bold;
-    text-align: center;
-}
-
-/* =============================
-   RESPONSIVO
-============================= */
+/* Responsivo */
 @media (max-width: 650px) {
     form {
         padding: 15px 20px;
@@ -244,13 +135,5 @@ td.matricula {
 
     header img.logo {
         height: 40px;
-    }
-
-    main {
-        flex-direction: column;
-    }
-
-    #estoque {
-        width: 100%;
     }
 }
