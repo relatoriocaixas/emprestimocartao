@@ -1,5 +1,5 @@
 ﻿/* =============================
-   RESET E BASE
+   RESET BÁSICO
 ============================= */
 * {
     margin: 0;
@@ -8,18 +8,18 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* =============================
+   CORPO
+============================= */
 body {
-    background-color: #1E1E1E;
+    background-color: #121212;
     color: #E0E0E0;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     padding: 20px;
 }
 
 /* =============================
-   CABEÇALHO GERAL
+   CABEÇALHO
 ============================= */
 header {
     display: flex;
@@ -27,18 +27,7 @@ header {
     gap: 15px;
     width: 100%;
     max-width: 900px;
-    padding: 15px 20px;
-    background: linear-gradient(145deg, #2c2c2c, #3b3b3b);
-    background-size: 200% 200%;
-    animation: brilhoMetal 6s infinite linear;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
-}
-
-@keyframes brilhoMetal {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    margin-bottom: 20px;
 }
 
 header img.logo {
@@ -46,41 +35,79 @@ header img.logo {
 }
 
 header h1 {
+    flex-grow: 1;
     font-size: 1.8rem;
-    color: #00FF7F;
-    text-shadow: 0 0 10px rgba(0,255,127,0.5);
+    color: #00FF7F; /* verde metálico */
+    text-shadow: 0 0 6px rgba(0,255,127,0.5);
 }
 
 header button {
-    margin-left: auto;
     padding: 8px 14px;
     font-size: 1rem;
     border: none;
     border-radius: 6px;
     cursor: pointer;
     background: linear-gradient(145deg, #00B070, #00D080);
-    background-size: 200% 200%;
-    animation: brilhoMetal 5s infinite linear;
     color: #111;
-    font-weight: 600;
     transition: 0.3s;
 }
-
 header button:hover {
-    filter: brightness(1.1);
+    filter: brightness(1.15);
 }
 
 /* =============================
-   FORMULÁRIO (index.html)
+   MAIN
+============================= */
+main {
+    display: flex;
+    gap: 20px;
+}
+
+/* =============================
+   ESTOQUE
+============================= */
+#estoque {
+    width: 260px;
+    background: #1e1e1e;
+    padding: 15px;
+    border-radius: 10px;
+    color: #e0e0e0;
+    height: fit-content;
+}
+
+#estoque h2 {
+    color: #00FF7F;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.cardEstoque {
+    background: #2a2a2a;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.cardEstoque h3 {
+    margin: 0;
+    font-size: 1rem;
+    /* cores por tipo serão definidas dinamicamente via JS ou atributo data-tipo */
+}
+
+.cardEstoque p {
+    margin: 3px 0;
+    font-size: 0.9rem;
+}
+
+/* =============================
+   FORMULÁRIO
 ============================= */
 form {
-    background-color: #2A2A2A;
+    flex: 1;
+    background-color: #1e1e1e;
     padding: 25px 30px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-    width: 100%;
-    max-width: 600px;
-    margin-top: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
 }
 
 .form-group {
@@ -112,7 +139,7 @@ form {
     box-shadow: 0 0 5px rgba(0,176,112,0.7);
 }
 
-/* CAMPOS DINÂMICOS (corrigido) */
+/* Campos dinâmicos */
 #digiconField,
 #prodataField,
 #meiaViagemField {
@@ -120,16 +147,14 @@ form {
 }
 
 /* =============================
-   BOTÃO SALVAR (index)
+   BOTÃO SALVAR
 ============================= */
-#salvarBtn {
+button#salvarBtn {
     padding: 12px;
     width: 100%;
     border: none;
     border-radius: 10px;
     background: linear-gradient(145deg, #00B070, #00D080);
-    background-size: 200% 200%;
-    animation: brilhoMetal 6s infinite linear;
     color: #111;
     font-weight: bold;
     font-size: 1.1rem;
@@ -137,78 +162,13 @@ form {
     transition: 0.3s;
 }
 
-#salvarBtn:hover {
+button#salvarBtn:hover {
     filter: brightness(1.15);
 }
 
 /* =============================
-   ESTOQUE
+   RELATÓRIO
 ============================= */
-#estoque {
-    background-color: #2A2A2A;
-    border-radius: 10px;
-    padding: 15px;
-    color: #E0E0E0;
-    width: 100%;
-    max-width: 900px;
-    margin-top: 25px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-}
-
-#estoque h2 {
-    background: linear-gradient(145deg, #3a3a3a, #4b4b4b);
-    background-size: 200% 200%;
-    animation: brilhoMetal 7s infinite linear;
-    border-radius: 8px;
-    padding: 10px;
-    font-size: 1.3rem;
-    text-align: center;
-    color: #00FF7F;
-    margin-bottom: 10px;
-}
-
-.cardEstoque {
-    background-color: #1E1E1E;
-    border-radius: 10px;
-    padding: 10px 15px;
-    margin-bottom: 12px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.4);
-}
-
-/* CORES POR TIPO DE CARTÃO */
-.cardEstoque h3 {
-    margin-bottom: 5px;
-    font-size: 1rem;
-}
-
-.cardEstoque h3[data-tipo="digicon"] { color: #FFD700; }
-.cardEstoque h3[data-tipo="prodata"] { color: #7CFC00; }
-.cardEstoque h3[data-tipo="meia"] { color: #00BFFF; }
-
-.cardEstoque p { margin: 3px 0; }
-
-.cardEstoque p b {
-    font-weight: 600;
-}
-
-.cardEstoque p b.disponivel {
-    color: #00ff7f; /* verde */
-}
-
-.cardEstoque p b.emprestado {
-    color: #FFD700; /* amarelo */
-}
-
-/* =============================
-   RELATÓRIO (relatorio.html)
-============================= */
-main {
-    display: flex;
-    gap: 20px;
-    width: 100%;
-    max-width: 1100px;
-}
-
 table {
     flex: 1;
     width: 100%;
@@ -223,13 +183,11 @@ th, td {
     text-align: left;
     border-bottom: 1px solid #333;
     font-size: 0.95rem;
-    color: #e0e0e0;
+    color: #E0E0E0;
 }
 
 th {
     background: linear-gradient(145deg, #00B070, #00D080);
-    background-size: 200% 200%;
-    animation: brilhoMetal 6s infinite linear;
     color: #111;
 }
 
@@ -237,37 +195,39 @@ tr:hover {
     background-color: #333;
 }
 
-/* =============================
-   BOTÕES RELATÓRIO
-============================= */
 .statusBtn {
-    padding: 6px 12px;
+    padding: 5px 10px;
     border: none;
-    border-radius: 6px;
+    border-radius: 5px;
     cursor: pointer;
     color: #111;
-    font-weight: 600;
     background: linear-gradient(145deg, #00B070, #00D080);
-    background-size: 200% 200%;
-    animation: brilhoMetal 6s infinite linear;
+    transition: 0.3s;
+}
+
+.statusBtn:hover {
+    filter: brightness(1.15);
 }
 
 .exportBtn {
     margin-bottom: 10px;
-    padding: 10px 18px;
+    padding: 8px 15px;
     background: linear-gradient(145deg, #0984e3, #74b9ff);
-    background-size: 200% 200%;
-    animation: brilhoMetal 7s infinite linear;
     color: #fff;
     border: none;
-    border-radius: 8px;
+    border-radius: 5px;
     cursor: pointer;
-    font-weight: 600;
     transition: 0.3s;
 }
 
 .exportBtn:hover {
     filter: brightness(1.15);
+}
+
+/* Matriculas com cores por quantidade */
+td.matricula {
+    font-weight: bold;
+    text-align: center;
 }
 
 /* =============================
@@ -288,5 +248,9 @@ tr:hover {
 
     main {
         flex-direction: column;
+    }
+
+    #estoque {
+        width: 100%;
     }
 }
