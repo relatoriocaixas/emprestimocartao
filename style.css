@@ -47,7 +47,7 @@ header button {
     border-radius: 6px;
     cursor: pointer;
     background-color: #00B070;
-    color: #1E1E1E;
+    color: #00ff7f;;
     transition: 0.3s;
 }
 
@@ -76,7 +76,7 @@ form {
 .form-group label {
     margin-bottom: 6px;
     font-weight: bold;
-    color: #00B070;
+    color: #00ff7f;;
 }
 
 .form-group input,
@@ -103,7 +103,7 @@ button#salvarBtn {
     border: none;
     border-radius: 10px;
     background-color: #00B070;
-    color: #1E1E1E;
+    color: #00ff7f;;
     font-weight: bold;
     font-size: 1.1rem;
     cursor: pointer;
