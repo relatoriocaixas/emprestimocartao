@@ -19,66 +19,24 @@
     <script src="firebaseConfig.js"></script>
     <script src="pdfGenerator.js"></script>
     <script src="index.js"></script>
-
-    <style>
-        main {
-            display: flex;
-            gap: 20px;
-        }
-
-        #estoque {
-            width: 260px;
-            background: #1e1e1e;
-            padding: 15px;
-            border-radius: 10px;
-            color: #e0e0e0;
-            height: fit-content;
-        }
-
-        #estoque h2 {
-            color: #00ff7f;
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-        }
-
-        .cardEstoque {
-            background: #2a2a2a;
-            border-radius: 8px;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-
-        .cardEstoque h3 {
-            margin: 0;
-            font-size: 1rem;
-            color: #00b894;
-        }
-
-        .cardEstoque p {
-            margin: 3px 0;
-            font-size: 0.9rem;
-        }
-
-        form {
-            flex: 1;
-        }
-    </style>
 </head>
 <body>
 <header>
     <img src="logo.png" alt="Logo" class="logo">
     <h1>Empréstimo de Cartões</h1>
     <button id="relatorioBtn">📄 Relatório Mensal</button>
+    <button id="voltarBtn">🔙 Voltar</button>
 </header>
 
 <main>
+    <!-- Estoque encostado à esquerda -->
     <aside id="estoque">
         <h2>📦 Estoque</h2>
         <div id="estoqueConteudo">Carregando...</div>
     </aside>
 
+    <!-- Formulário -->
     <form id="emprestimoForm">
-        <!-- MATRÍCULA AGORA VEM PRIMEIRO -->
         <div class="form-group">
             <label>Matrícula do Motorista:</label>
             <input type="text" id="matriculaMotorista" required>
@@ -88,7 +46,6 @@
             <label>Nome do Motorista:</label>
             <input type="text" id="nomeMotorista" required>
         </div>
-        <!-- FIM DA INVERSÃO -->
 
         <div class="form-group">
             <label>Tipo de Cartão:</label>
@@ -181,11 +138,9 @@ async function atualizarEstoque() {
         gerarLista("prodata") +
         gerarLista("meiaViagem");
 
-    // 🔹 Atualiza selects dos cartões
     atualizarSelects(emprestados, total);
 }
 
-// Atualiza selects disponíveis
 function atualizarSelects(emprestados, total) {
     const digiconSelect = document.getElementById("numBordoDigicon");
     const prodataSelect = document.getElementById("numBordoProdata");
@@ -210,7 +165,6 @@ function atualizarSelects(emprestados, total) {
 
 document.addEventListener("DOMContentLoaded", atualizarEstoque);
 
-// 🔁 Atualização automática do nome ao digitar a matrícula
 document.addEventListener("DOMContentLoaded", () => {
     const matriculaInput = document.getElementById("matriculaMotorista");
     const nomeInput = document.getElementById("nomeMotorista");

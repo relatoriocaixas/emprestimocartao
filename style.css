@@ -13,7 +13,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start; /* estoque alinhado à esquerda */
     padding: 20px;
 }
 
@@ -111,8 +111,14 @@ button#salvarBtn {
     transition: 0.3s;
 }
 
+/* Emoji e hover */
+button#salvarBtn::before {
+    content: "💾 ";
+}
+
 button#salvarBtn:hover {
-    filter: brightness(1.1);
+    filter: brightness(1.2) scale(1.02);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
 }
 
 /* Campos dinâmicos */
@@ -122,7 +128,24 @@ button#salvarBtn:hover {
     display: none;
 }
 
+/* Layout principal */
+main {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0;
+    padding: 0;
+    align-items: flex-start; /* alinhamento ao topo */
+}
+
 /* Estoque - cards com cores e efeito metal */
+#estoque {
+    margin-left: 0;
+    flex-shrink: 0;
+    width: 260px;
+}
+
 #estoqueConteudo {
     display: flex;
     flex-direction: column;
@@ -135,12 +158,14 @@ button#salvarBtn:hover {
     border-radius: 10px;
     padding: 12px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.6);
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
 }
 
+/* Hover: leve levitação, sombra mais intensa e brilho sutil */
 .cardEstoque:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.8);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.8);
+    filter: brightness(1.05);
 }
 
 /* Título de cada card */
@@ -151,19 +176,17 @@ button#salvarBtn:hover {
     text-shadow: 1px 1px 2px rgba(255,255,255,0.2); /* brilho sutil */
 }
 
-/* Bordo Digicon */
+/* Bordos com cores novas */
 .cardEstoque:nth-child(1) h3 {
-    color: #FFD700; /* amarelo light */
+    color: #FFD700; /* Bordo Digicon: amarelo light */
 }
 
-/* Bordo Prodata */
 .cardEstoque:nth-child(2) h3 {
-    color: #00FF7F; /* verde menta */
+    color: #00FF7F; /* Bordo Prodata: verde menta */
 }
 
-/* Meia Viagem */
 .cardEstoque:nth-child(3) h3 {
-    color: #87CEFA; /* azul pastel */
+    color: #87CEFA; /* Meia Viagem: azul pastel */
 }
 
 /* Textos de destaque dentro dos cards */
@@ -172,13 +195,13 @@ button#salvarBtn:hover {
     text-shadow: 0 0 2px rgba(255,255,255,0.5); /* brilho refletivo */
 }
 
-/* Disponível e Emprestado podem ter cores diferenciadas via JS */
+/* Disponível e Emprestado cores novas */
 .cardEstoque p b.disponivel {
-    color: #00FF7F; /* verde metálico para disponível */
+    color: #00CED1; /* azul petróleo suave */
 }
 
 .cardEstoque p b.emprestado {
-    color: #FF5555; /* vermelho metálico para emprestado */
+    color: #FF6347; /* vermelho tomate */
 }
 
 /* Cabeçalho da tabela */
@@ -202,5 +225,15 @@ table thead th {
 
     header img.logo {
         height: 40px;
+    }
+
+    main {
+        flex-direction: column; /* empilha para telas pequenas */
+        align-items: center;
+    }
+
+    #estoque {
+        width: 100%;
+        margin-left: 0;
     }
 }
