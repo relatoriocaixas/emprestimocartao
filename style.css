@@ -180,6 +180,15 @@ button#salvarBtn:hover {
     color: #FF5555; /* vermelho metálico para emprestado */
 }
 
+/* Cabeçalho da tabela */
+table thead th {
+    background-color: #00ff7f; /* verde metálico */
+    color: #1E1E1E; /* texto escuro para contraste */
+    padding: 10px;
+    text-align: left;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.2); /* leve efeito metálico */
+}
+
 /* Responsivo */
 @media (max-width: 650px) {
     form {
