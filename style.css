@@ -65,6 +65,7 @@ form {
     width: 100%;
     max-width: 600px;
     margin-top: 25px;
+    margin-left: 280px; /* espaço para o estoque à esquerda */
 }
 
 /* Form groups */
@@ -217,6 +218,7 @@ table thead th {
 @media (max-width: 650px) {
     form {
         padding: 15px 20px;
+        margin-left: 0; /* remove margem para telas pequenas */
     }
 
     header h1 {
@@ -235,5 +237,6 @@ table thead th {
     #estoque {
         width: 100%;
         margin-left: 0;
+        margin-bottom: 20px;
     }
 }
