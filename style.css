@@ -36,7 +36,7 @@ header img.logo {
 
 header h1 {
     font-size: 1.8rem;
-    color: #00ff7f;; /* verde metálico discreto */
+    color: #00ff7f; /* verde metálico discreto */
 }
 
 header button {
@@ -46,8 +46,8 @@ header button {
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    background-color: #00B070;
-    color: #00ff7f;;
+    background-color: #00ff7f;
+    color: #FFFFFF;
     transition: 0.3s;
 }
 
@@ -76,7 +76,7 @@ form {
 .form-group label {
     margin-bottom: 6px;
     font-weight: bold;
-    color: #00ff7f;;
+    color: #00ff7f;
 }
 
 .form-group input,
@@ -102,8 +102,8 @@ button#salvarBtn {
     width: 100%;
     border: none;
     border-radius: 10px;
-    background-color: #00B070;
-    color: #00ff7f;;
+    background-color: #00ff7f;
+    color: #FFFFFF;
     font-weight: bold;
     font-size: 1.1rem;
     cursor: pointer;
