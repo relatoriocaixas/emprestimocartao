@@ -43,7 +43,7 @@ header button {
     margin-left: auto;
     padding: 8px 14px;
     font-size: 1rem;
-    font-weight: bold; /* adiciona negrito */
+    font-weight: bold; /* negrito */
     border: none;
     border-radius: 6px;
     cursor: pointer;
@@ -153,17 +153,17 @@ button#salvarBtn:hover {
 
 /* Bordo Digicon */
 .cardEstoque:nth-child(1) h3 {
-    color: #00BFFF; /* azul pastel metálico */
+    color: #FFD700; /* amarelo light */
 }
 
 /* Bordo Prodata */
 .cardEstoque:nth-child(2) h3 {
-    color: #FFD700; /* amarelo light metálico */
+    color: #00FF7F; /* verde menta */
 }
 
 /* Meia Viagem */
 .cardEstoque:nth-child(3) h3 {
-    color: #FF69B4; /* rosa metálico */
+    color: #87CEFA; /* azul pastel */
 }
 
 /* Textos de destaque dentro dos cards */
