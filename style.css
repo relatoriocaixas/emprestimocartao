@@ -43,6 +43,7 @@ header button {
     margin-left: auto;
     padding: 8px 14px;
     font-size: 1rem;
+    font-weight: bold; /* adiciona negrito */
     border: none;
     border-radius: 6px;
     cursor: pointer;
