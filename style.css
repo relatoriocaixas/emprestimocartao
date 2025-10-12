@@ -50,7 +50,7 @@ header h1 {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }
 
-/* Botão "Voltar" à direita */
+/* Botão "Voltar" ou ação à direita */
 header button {
     position: absolute;
     right: 40px;
@@ -122,7 +122,6 @@ main {
     font-weight: bold;
 }
 
-/* Cores específicas dos títulos dos cards */
 .cardEstoque:nth-child(1) h3 { color: #FFD700; }
 .cardEstoque:nth-child(2) h3 { color: #00FF7F; }
 .cardEstoque:nth-child(3) h3 { color: #87CEFA; }
@@ -136,7 +135,7 @@ form {
     width: 100%;
     max-width: 750px;
     margin-top: 25px;
-    margin-left: 320px; /* centraliza mais considerando o estoque */
+    margin-left: 280px; /* centraliza mais considerando o estoque */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -209,11 +208,12 @@ button#salvarBtn:hover {
 /* ===== Tabela do Relatório ===== */
 table {
     flex: 1;
-    margin-left: 320px; /* desloca tabela para não sobrepor estoque */
+    margin-left: 280px; /* tabela mais à esquerda */
     border-collapse: collapse;
     background: #1f1f1f;
     border-radius: 8px;
     overflow: hidden;
+    margin-top: 20px; /* separa do botão */
 }
 
 /* Linhas mais baixas e células mais largas */
@@ -241,7 +241,7 @@ td.matricula {
     text-align: center;
 }
 
-/* ===== Botões de status e exportação ===== */
+/* Botões de status e exportação */
 .statusBtn {
     padding: 5px 10px;
     border: none;
@@ -260,6 +260,8 @@ td.matricula {
     cursor: pointer;
     font-weight: bold;
     transition: 0.3s;
+    margin-left: 280px; /* posiciona à direita do estoque */
+    margin-top: 0; /* sobe acima da tabela */
 }
 
 .exportBtn:hover { background: #74b9ff; }
@@ -289,4 +291,5 @@ td.matricula {
     header button { position: static; }
 
     header { flex-direction: column; }
+    .exportBtn { margin-left: 0; }
 }
