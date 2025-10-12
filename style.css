@@ -1,55 +1,46 @@
-﻿/* RESET GERAL */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+﻿/* =========================================
+   STYLE.CSS - Relatório de Empréstimos
+   ========================================= */
 
-/* CORPO */
 body {
-    background-color: #1E1E1E;
-    color: #E0E0E0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    background-color: #121212;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #e0e0e0;
+    margin: 0;
     padding: 20px;
 }
 
-/* CABEÇALHO */
+/* ===== HEADER ===== */
 header {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;
-    width: 100%;
-    max-width: 1200px; /* mais largo */
-    margin-left: 250px; /* empurra o bloco bem mais à direita */
-    padding: 20px 40px;
-    background-color: #2A2A2A;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
     position: relative;
+    margin-bottom: 25px;
+    gap: 20px;
 }
 
+/* Logo à esquerda */
 header img.logo {
     height: 50px;
     position: absolute;
     left: 30px;
 }
 
+/* Título centralizado */
 header h1 {
-    font-size: 1.9rem;
+    font-size: 1.8rem;
     color: #00ff7f;
     text-align: center;
     margin: 0 auto;
+    font-weight: bold;
 }
 
+/* Botão Voltar à direita */
 header button {
     position: absolute;
     right: 30px;
-    padding: 8px 14px;
+    padding: 8px 16px;
     font-size: 1rem;
     font-weight: bold;
     border: none;
@@ -59,224 +50,143 @@ header button {
     color: #1E1E1E;
     transition: 0.3s;
 }
-
 header button:hover {
-    filter: brightness(1.1);
+    background-color: #00cc66;
 }
 
-/* FORMULÁRIO */
-form {
-    background-color: #2A2A2A;
-    padding: 25px 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
-    width: 100%;
-    max-width: 600px;
-    margin-top: 25px;
-    margin-left: 280px;
-}
-
-/* CAMPOS */
-.form-group {
-    margin-bottom: 15px;
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group label {
-    margin-bottom: 6px;
-    font-weight: bold;
-    color: #00ff7f;
-}
-
-.form-group input,
-.form-group select {
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #00B070;
-    background-color: #1E1E1E;
-    color: #E0E0E0;
-    font-size: 1rem;
-}
-
-.form-group input:focus,
-.form-group select:focus {
-    outline: none;
-    border-color: #00D080;
-    box-shadow: 0 0 5px rgba(0,176,112,0.7);
-}
-
-/* BOTÃO SALVAR */
-button#salvarBtn {
-    padding: 12px;
-    width: 100%;
-    border: none;
-    border-radius: 10px;
-    background-color: #00ff7f;
-    color: #1E1E1E;
-    font-weight: bold;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-button#salvarBtn::before {
-    content: "💾 ";
-}
-
-button#salvarBtn:hover {
-    filter: brightness(1.2) scale(1.02);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
-}
-
-/* CAMPOS DINÂMICOS */
-#digiconField,
-#prodataField,
-#meiaViagemField {
-    display: none;
-}
-
-/* LAYOUT GERAL */
+/* ===== MAIN ===== */
 main {
     display: flex;
-    gap: 20px;
-    width: 100%;
-    max-width: 1300px;
-    margin: 0;
-    padding: 0;
+    gap: 25px;
+    justify-content: center;
     align-items: flex-start;
 }
 
-/* ESTOQUE */
+/* ===== ESTOQUE LATERAL ===== */
 #estoque {
-    margin-left: 0;
-    flex-shrink: 0;
     width: 260px;
-}
-
-#estoqueConteudo {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-/* CARDS */
-.cardEstoque {
-    background: linear-gradient(145deg, #2a2a2a, #232323);
+    background: #1e1e1e;
+    padding: 15px;
     border-radius: 10px;
-    padding: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.6);
-    transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+    color: #e0e0e0;
+    height: fit-content;
+    position: sticky;
+    top: 20px;
 }
 
-.cardEstoque:hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.8);
-    filter: brightness(1.05);
+#estoque h2 {
+    color: #00ff7f;
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+}
+
+.cardEstoque {
+    background: #2a2a2a;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 12px;
 }
 
 .cardEstoque h3 {
-    margin: 0 0 8px 0;
+    margin: 0;
     font-size: 1rem;
-    font-weight: bold;
-    text-shadow: 1px 1px 2px rgba(255,255,255,0.2);
+    color: #00b894;
 }
 
-.cardEstoque:nth-child(1) h3 {
-    color: #FFD700;
+.cardEstoque p {
+    margin: 3px 0;
+    font-size: 0.9rem;
 }
 
-.cardEstoque:nth-child(2) h3 {
-    color: #00FF7F;
-}
-
-.cardEstoque:nth-child(3) h3 {
-    color: #87CEFA;
-}
-
-.cardEstoque p b {
-    color: #FFFFFF;
-    text-shadow: 0 0 2px rgba(255,255,255,0.5);
-}
-
-.cardEstoque p b.disponivel {
-    color: #00CED1;
-}
-
-.cardEstoque p b.emprestado {
-    color: #FF6347;
-}
-
-/* ====== RELATÓRIO ====== */
+/* ===== TABELA RELATÓRIO ===== */
 table {
-    width: 98%; /* ainda mais largo horizontalmente */
-    margin: 30px auto;
+    flex: 1;
+    width: 100%;
     border-collapse: collapse;
-    background-color: #2A2A2A;
-    border-radius: 10px;
+    background: #1f1f1f;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.5);
 }
 
-table thead th {
-    background-color: #00ff7f;
-    color: #1E1E1E;
-    padding: 6px 22px; /* bem menor altura */
+/* Células mais largas e mais baixas */
+th, td {
+    padding: 6px 14px;
     text-align: left;
-    font-size: 1rem;
-    text-shadow: 1px 1px 2px rgba(255,255,255,0.2);
-}
-
-table tbody td {
-    padding: 5px 22px; /* linhas mais baixas */
     border-bottom: 1px solid #333;
-    word-break: break-word;
-    font-size: 0.95rem;
+    font-size: 0.92rem;
+    color: #e0e0e0;
+    white-space: nowrap;
 }
 
-/* Colunas mais largas e equilibradas */
-table td:nth-child(1) { width: 8%; }
-table td:nth-child(2) { width: 8%; }
-table td:nth-child(3) { width: 30%; } /* nome mais largo */
-table td:nth-child(4) { width: 18%; }
-table td:nth-child(5) { width: 18%; }
-table td:nth-child(6) { width: 18%; }
+th {
+    background-color: #00b894;
+    color: #111;
+    font-weight: bold;
+}
 
-/* RESPONSIVO */
-@media (max-width: 650px) {
-    form {
-        padding: 15px 20px;
-        margin-left: 0;
-    }
+tr:hover {
+    background-color: #2a2a2a;
+}
 
-    header {
-        margin-left: 0;
-        flex-direction: column;
-        text-align: center;
-    }
+/* Destacar campo matrícula */
+td.matricula {
+    font-weight: bold;
+    text-align: center;
+}
 
-    header h1 {
-        font-size: 1.5rem;
-    }
+/* ===== BOTÕES ===== */
+.statusBtn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #111;
+}
 
-    header img.logo {
-        height: 40px;
-        position: static;
-    }
+.exportBtn {
+    margin-bottom: 12px;
+    padding: 10px 18px;
+    background: #0984e3;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.exportBtn:hover {
+    background: #74b9ff;
+}
 
+/* ===== SCROLL E RESPONSIVIDADE ===== */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
     main {
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
     }
-
     #estoque {
         width: 100%;
-        margin-left: 0;
-        margin-bottom: 20px;
+        position: relative;
     }
-
-    table {
-        width: 100%;
-        margin: 15px 0;
+    header img.logo {
+        position: static;
+    }
+    header button {
+        position: static;
+    }
+    header {
+        flex-direction: column;
     }
 }
