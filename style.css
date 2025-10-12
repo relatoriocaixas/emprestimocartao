@@ -21,6 +21,7 @@ body {
 header {
     display: flex;
     align-items: center;
+    justify-content: center; /* centraliza o título */
     gap: 15px;
     width: 100%;
     max-width: 900px;
@@ -28,22 +29,28 @@ header {
     background-color: #2A2A2A;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    position: relative; /* permite posicionar os botões */
 }
 
 header img.logo {
     height: 50px;
+    position: absolute;
+    left: 20px;
 }
 
 header h1 {
     font-size: 1.8rem;
     color: #00ff7f; /* verde metálico discreto */
+    text-align: center;
+    margin: 0 auto;
 }
 
 header button {
-    margin-left: auto;
+    position: absolute;
+    right: 20px;
     padding: 8px 14px;
     font-size: 1rem;
-    font-weight: bold; /* negrito */
+    font-weight: bold;
     border: none;
     border-radius: 6px;
     cursor: pointer;
@@ -205,14 +212,38 @@ main {
     color: #FF6347; /* vermelho tomate */
 }
 
-/* Cabeçalho da tabela */
-table thead th {
-    background-color: #00ff7f; /* verde metálico */
-    color: #1E1E1E; /* texto escuro para contraste */
-    padding: 10px;
-    text-align: left;
-    text-shadow: 1px 1px 2px rgba(255,255,255,0.2); /* leve efeito metálico */
+/* Cabeçalho da tabela - relatorio.html */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #2A2A2A;
+    border-radius: 8px;
+    overflow: hidden;
 }
+
+table thead th {
+    background-color: #00ff7f;
+    color: #1E1E1E;
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 1rem;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.2);
+}
+
+table tbody td {
+    padding: 10px 16px;
+    border-bottom: 1px solid #333;
+    word-break: break-word;
+}
+
+/* Ajuste de largura das colunas */
+table td:nth-child(1) { width: 12%; }   /* Tipo */
+table td:nth-child(2) { width: 12%; }   /* Número */
+table td:nth-child(3) { width: 24%; }   /* Nome */
+table td:nth-child(4) { width: 16%; }   /* Data */
+table td:nth-child(5) { width: 18%; }   /* Status */
+table td:nth-child(6) { width: 18%; }   /* Observações */
 
 /* Responsivo */
 @media (max-width: 650px) {
