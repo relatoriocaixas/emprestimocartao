@@ -106,6 +106,13 @@ main {
     padding: 10px;
     margin-bottom: 12px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+}
+
+.cardEstoque:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.8);
+    filter: brightness(1.05);
 }
 
 .cardEstoque h3 {
@@ -115,15 +122,9 @@ main {
 }
 
 /* Cores específicas dos títulos dos cards */
-.cardEstoque:nth-child(1) h3 {
-    color: #FFD700; /* amarelo light */
-}
-.cardEstoque:nth-child(2) h3 {
-    color: #00FF7F; /* verde menta */
-}
-.cardEstoque:nth-child(3) h3 {
-    color: #87CEFA; /* azul pastel */
-}
+.cardEstoque:nth-child(1) h3 { color: #FFD700; }
+.cardEstoque:nth-child(2) h3 { color: #00FF7F; }
+.cardEstoque:nth-child(3) h3 { color: #87CEFA; }
 
 /* ===== Formulário ===== */
 form {
@@ -132,9 +133,12 @@ form {
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.6);
     width: 100%;
-    max-width: 600px;
+    max-width: 700px;
     margin-top: 25px;
     margin-left: 300px; /* espaço lateral para o estoque */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* centraliza os campos */
 }
 
 /* Grupos de campo */
@@ -142,6 +146,8 @@ form {
     margin-bottom: 15px;
     display: flex;
     flex-direction: column;
+    width: 100%; /* deixa campos esticados horizontalmente */
+    max-width: 600px;
 }
 
 .form-group label {
@@ -159,6 +165,7 @@ form {
     color: #E0E0E0;
     font-size: 1rem;
     transition: 0.3s;
+    width: 100%; /* preenche horizontalmente */
 }
 
 .form-group input:focus,
@@ -166,6 +173,13 @@ form {
     outline: none;
     border-color: #00D080;
     box-shadow: 0 0 5px rgba(0,176,112,0.7);
+}
+
+/* Apenas exibe o campo do tipo selecionado */
+#digiconField,
+#prodataField,
+#meiaViagemField {
+    display: none;
 }
 
 /* ===== Botão Salvar ===== */
@@ -202,7 +216,7 @@ table {
     overflow: hidden;
 }
 
-/* Linhas mais baixas e mais largas */
+/* Linhas mais baixas e células mais largas */
 th, td {
     padding: 6px 14px;
     text-align: left;
@@ -236,14 +250,8 @@ td.matricula {
     color: #111;
 }
 
-/* Novas cores para Disponível e Emprestado */
-.status-disponivel {
-    background-color: #7bed9f; /* verde claro */
-}
-
-.status-emprestado {
-    background-color: #ff7675; /* vermelho suave */
-}
+.status-disponivel { background-color: #7bed9f; }
+.status-emprestado { background-color: #ff7675; }
 
 .exportBtn {
     margin-bottom: 12px;
@@ -257,21 +265,12 @@ td.matricula {
     transition: 0.3s;
 }
 
-.exportBtn:hover {
-    background: #74b9ff;
-}
+.exportBtn:hover { background: #74b9ff; }
 
 /* ===== Scroll e Responsividade ===== */
-::-webkit-scrollbar {
-    width: 8px;
-}
-::-webkit-scrollbar-thumb {
-    background: #333;
-    border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #555; }
 
 /* Responsivo */
 @media (max-width: 900px) {
@@ -285,18 +284,13 @@ td.matricula {
         position: relative;
         left: 0;
         top: 0;
+        margin-bottom: 20px;
     }
 
-    form {
-        margin-left: 0;
-    }
+    form { margin-left: 0; }
 
     header img.logo,
-    header button {
-        position: static;
-    }
+    header button { position: static; }
 
-    header {
-        flex-direction: column;
-    }
+    header { flex-direction: column; }
 }
