@@ -13,7 +13,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* estoque alinhado à esquerda */
+    align-items: flex-start;
     padding: 20px;
 }
 
@@ -21,33 +21,34 @@ body {
 header {
     display: flex;
     align-items: center;
-    justify-content: center; /* centraliza o título */
+    justify-content: center;
     gap: 15px;
     width: 100%;
-    max-width: 900px;
-    padding: 15px 20px;
+    max-width: 1100px; /* aumentamos para expandir horizontalmente */
+    margin-left: 150px; /* empurra o bloco (título + botões) mais para o centro */
+    padding: 20px 30px;
     background-color: #2A2A2A;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-    position: relative; /* permite posicionar os botões */
+    position: relative;
 }
 
 header img.logo {
     height: 50px;
     position: absolute;
-    left: 20px;
+    left: 30px;
 }
 
 header h1 {
     font-size: 1.8rem;
-    color: #00ff7f; /* verde metálico discreto */
+    color: #00ff7f;
     text-align: center;
     margin: 0 auto;
 }
 
 header button {
     position: absolute;
-    right: 20px;
+    right: 30px;
     padding: 8px 14px;
     font-size: 1rem;
     font-weight: bold;
@@ -72,7 +73,7 @@ form {
     width: 100%;
     max-width: 600px;
     margin-top: 25px;
-    margin-left: 280px; /* espaço para o estoque à esquerda */
+    margin-left: 280px;
 }
 
 /* Form groups */
@@ -119,7 +120,6 @@ button#salvarBtn {
     transition: 0.3s;
 }
 
-/* Emoji e hover */
 button#salvarBtn::before {
     content: "💾 ";
 }
@@ -144,10 +144,10 @@ main {
     max-width: 1200px;
     margin: 0;
     padding: 0;
-    align-items: flex-start; /* alinhamento ao topo */
+    align-items: flex-start;
 }
 
-/* Estoque - cards com cores e efeito metal */
+/* Estoque */
 #estoque {
     margin-left: 0;
     flex-shrink: 0;
@@ -160,96 +160,92 @@ main {
     gap: 10px;
 }
 
-/* Card de cada tipo de cartão */
+/* Cards */
 .cardEstoque {
-    background: linear-gradient(145deg, #2a2a2a, #232323); /* efeito metal */
+    background: linear-gradient(145deg, #2a2a2a, #232323);
     border-radius: 10px;
     padding: 12px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.6);
     transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
 }
 
-/* Hover: leve levitação, sombra mais intensa e brilho sutil */
 .cardEstoque:hover {
     transform: translateY(-3px) scale(1.02);
     box-shadow: 0 6px 16px rgba(0,0,0,0.8);
     filter: brightness(1.05);
 }
 
-/* Título de cada card */
 .cardEstoque h3 {
     margin: 0 0 8px 0;
     font-size: 1rem;
     font-weight: bold;
-    text-shadow: 1px 1px 2px rgba(255,255,255,0.2); /* brilho sutil */
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.2);
 }
 
-/* Bordos com cores novas */
 .cardEstoque:nth-child(1) h3 {
-    color: #FFD700; /* Bordo Digicon: amarelo light */
+    color: #FFD700;
 }
 
 .cardEstoque:nth-child(2) h3 {
-    color: #00FF7F; /* Bordo Prodata: verde menta */
+    color: #00FF7F;
 }
 
 .cardEstoque:nth-child(3) h3 {
-    color: #87CEFA; /* Meia Viagem: azul pastel */
+    color: #87CEFA;
 }
 
-/* Textos de destaque dentro dos cards */
 .cardEstoque p b {
-    color: #FFFFFF; /* branco padrão */
-    text-shadow: 0 0 2px rgba(255,255,255,0.5); /* brilho refletivo */
+    color: #FFFFFF;
+    text-shadow: 0 0 2px rgba(255,255,255,0.5);
 }
 
-/* Disponível e Emprestado cores novas */
 .cardEstoque p b.disponivel {
-    color: #00CED1; /* azul petróleo suave */
+    color: #00CED1;
 }
 
 .cardEstoque p b.emprestado {
-    color: #FF6347; /* vermelho tomate */
+    color: #FF6347;
 }
 
-/* Cabeçalho da tabela - relatorio.html */
+/* ====== RELATÓRIO ====== */
 table {
-    width: 100%;
+    width: 95%; /* mais largo horizontalmente */
+    margin: 30px auto; /* centraliza horizontalmente */
     border-collapse: collapse;
-    margin-top: 20px;
     background-color: #2A2A2A;
-    border-radius: 8px;
+    border-radius: 10px;
     overflow: hidden;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.5);
 }
 
 table thead th {
     background-color: #00ff7f;
     color: #1E1E1E;
-    padding: 12px 16px;
+    padding: 10px 18px; /* menor altura */
     text-align: left;
     font-size: 1rem;
     text-shadow: 1px 1px 2px rgba(255,255,255,0.2);
 }
 
 table tbody td {
-    padding: 10px 16px;
+    padding: 8px 18px; /* linhas mais baixas */
     border-bottom: 1px solid #333;
     word-break: break-word;
 }
 
-/* Ajuste de largura das colunas */
-table td:nth-child(1) { width: 12%; }   /* Tipo */
-table td:nth-child(2) { width: 12%; }   /* Número */
-table td:nth-child(3) { width: 24%; }   /* Nome */
-table td:nth-child(4) { width: 16%; }   /* Data */
-table td:nth-child(5) { width: 18%; }   /* Status */
-table td:nth-child(6) { width: 18%; }   /* Observações */
+/* Colunas mais proporcionais */
+table td:nth-child(1) { width: 10%; }
+table td:nth-child(2) { width: 10%; }
+table td:nth-child(3) { width: 28%; }
+table td:nth-child(4) { width: 16%; }
+table td:nth-child(5) { width: 18%; }
+table td:nth-child(6) { width: 18%; }
 
 /* Responsivo */
 @media (max-width: 650px) {
     form {
         padding: 15px 20px;
-        margin-left: 0; /* remove margem para telas pequenas */
+        margin-left: 0;
     }
 
     header h1 {
@@ -261,7 +257,7 @@ table td:nth-child(6) { width: 18%; }   /* Observações */
     }
 
     main {
-        flex-direction: column; /* empilha para telas pequenas */
+        flex-direction: column;
         align-items: center;
     }
 
@@ -269,5 +265,10 @@ table td:nth-child(6) { width: 18%; }   /* Observações */
         width: 100%;
         margin-left: 0;
         margin-bottom: 20px;
+    }
+
+    table {
+        width: 100%;
+        margin: 15px 0;
     }
 }
