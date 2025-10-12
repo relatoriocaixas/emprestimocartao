@@ -206,6 +206,8 @@ table {
     border-radius: 8px;
     overflow: hidden;
     margin-top: 20px;
+    table-layout: auto; /* deixa colunas se expandirem conforme conteúdo */
+    width: 100%; /* ocupa toda a largura disponível do container */
 }
 
 th, td {
@@ -214,6 +216,7 @@ th, td {
     border-bottom: 1px solid #333;
     font-size: 0.95rem;
     color: #e0e0e0;
+    min-width: 120px; /* largura mínima de cada célula para ficarem mais compridas */
 }
 
 th {
