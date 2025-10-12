@@ -13,7 +13,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center; /* centraliza formulário e título */
+    align-items: flex-start; /* conteúdo todo para a esquerda */
     padding: 20px;
 }
 
@@ -71,6 +71,7 @@ form {
     width: 100%;
     max-width: 650px;
     margin-bottom: 40px;
+    margin-left: 0; /* puxado para a esquerda */
 }
 
 .form-group {
@@ -143,7 +144,7 @@ main {
 
 /* Estoque */
 #estoque {
-    margin-left: 0;
+    margin-left: auto; /* colado na margem direita */
     flex-shrink: 0;
     width: 260px;
 }
@@ -195,12 +196,11 @@ main {
     cursor: pointer;
     font-weight: bold;
     transition: 0.3s;
-    margin-left: 280px; /* ajusta posição para não sobrepor estoque */
 }
 
 table {
     flex: 1;
-    margin-left: 280px; /* posiciona relatório mais à esquerda, sem sobrepor estoque */
+    margin-left: 0; /* relatório puxado para a esquerda */
     border-collapse: collapse;
     background: #1f1f1f;
     border-radius: 8px;
@@ -229,7 +229,6 @@ td.matricula { font-weight: bold; text-align: center; }
 @media (max-width: 900px) {
     header img.logo { height: 60px; }
     header h1 { font-size: 1.8rem; padding: 8px 15px; }
-    .exportBtn, table { margin-left: 0; }
-    main { flex-direction: column; align-items: center; }
-    #estoque { width: 100%; margin-bottom: 20px; }
+    main { flex-direction: column; align-items: flex-start; }
+    #estoque { width: 100%; margin-top: 20px; margin-left: 0; }
 }
