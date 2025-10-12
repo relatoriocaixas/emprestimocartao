@@ -1,45 +1,59 @@
 ﻿/* =========================================
-   STYLE.CSS - Relatório de Empréstimos
+   STYLE.CSS - Sistema de Empréstimos
    ========================================= */
 
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ===== Corpo ===== */
 body {
     background-color: #121212;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #e0e0e0;
-    margin: 0;
+    color: #E0E0E0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 20px;
 }
 
-/* ===== HEADER ===== */
+/* ===== Cabeçalho ===== */
 header {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    margin-bottom: 30px;
     position: relative;
-    margin-bottom: 25px;
-    gap: 20px;
 }
 
 /* Logo à esquerda */
 header img.logo {
     height: 50px;
     position: absolute;
-    left: 30px;
+    left: 40px;
 }
 
-/* Título centralizado */
+/* Caixa do título centralizada */
 header h1 {
-    font-size: 1.8rem;
+    background-color: #2A2A2A;
     color: #00ff7f;
-    text-align: center;
-    margin: 0 auto;
+    font-size: 1.8rem;
     font-weight: bold;
+    text-align: center;
+    padding: 12px 40px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Botão Voltar à direita */
+/* Botão "Voltar" à direita */
 header button {
     position: absolute;
-    right: 30px;
+    right: 40px;
     padding: 8px 16px;
     font-size: 1rem;
     font-weight: bold;
@@ -50,19 +64,23 @@ header button {
     color: #1E1E1E;
     transition: 0.3s;
 }
+
 header button:hover {
-    background-color: #00cc66;
+    filter: brightness(1.1);
 }
 
-/* ===== MAIN ===== */
+/* ===== Layout principal ===== */
 main {
     display: flex;
-    gap: 25px;
     justify-content: center;
     align-items: flex-start;
+    width: 100%;
+    max-width: 1400px;
+    gap: 30px;
+    position: relative;
 }
 
-/* ===== ESTOQUE LATERAL ===== */
+/* ===== Estoque lateral fixo à esquerda ===== */
 #estoque {
     width: 260px;
     background: #1e1e1e;
@@ -70,8 +88,10 @@ main {
     border-radius: 10px;
     color: #e0e0e0;
     height: fit-content;
-    position: sticky;
-    top: 20px;
+    position: fixed;
+    top: 120px;
+    left: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
 
 #estoque h2 {
@@ -85,20 +105,94 @@ main {
     border-radius: 8px;
     padding: 10px;
     margin-bottom: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.6);
 }
 
 .cardEstoque h3 {
-    margin: 0;
+    margin: 0 0 8px 0;
     font-size: 1rem;
-    color: #00b894;
+    font-weight: bold;
 }
 
-.cardEstoque p {
-    margin: 3px 0;
-    font-size: 0.9rem;
+/* Cores específicas dos títulos dos cards */
+.cardEstoque:nth-child(1) h3 {
+    color: #FFD700; /* amarelo light */
+}
+.cardEstoque:nth-child(2) h3 {
+    color: #00FF7F; /* verde menta */
+}
+.cardEstoque:nth-child(3) h3 {
+    color: #87CEFA; /* azul pastel */
 }
 
-/* ===== TABELA RELATÓRIO ===== */
+/* ===== Formulário ===== */
+form {
+    background-color: #2A2A2A;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    width: 100%;
+    max-width: 600px;
+    margin-top: 25px;
+    margin-left: 300px; /* espaço lateral para o estoque */
+}
+
+/* Grupos de campo */
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #00ff7f;
+}
+
+.form-group input,
+.form-group select {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #00B070;
+    background-color: #1E1E1E;
+    color: #E0E0E0;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #00D080;
+    box-shadow: 0 0 5px rgba(0,176,112,0.7);
+}
+
+/* ===== Botão Salvar ===== */
+button#salvarBtn {
+    padding: 12px;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    background-color: #00ff7f;
+    color: #1E1E1E;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Emoji 💾 e efeito hover */
+button#salvarBtn::before {
+    content: "💾 ";
+}
+
+button#salvarBtn:hover {
+    filter: brightness(1.2) scale(1.02);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+
+/* ===== Tabela do Relatório ===== */
 table {
     flex: 1;
     width: 100%;
@@ -108,7 +202,7 @@ table {
     overflow: hidden;
 }
 
-/* Células mais largas e mais baixas */
+/* Linhas mais baixas e mais largas */
 th, td {
     padding: 6px 14px;
     text-align: left;
@@ -128,19 +222,27 @@ tr:hover {
     background-color: #2a2a2a;
 }
 
-/* Destacar campo matrícula */
 td.matricula {
     font-weight: bold;
     text-align: center;
 }
 
-/* ===== BOTÕES ===== */
+/* ===== Botões de status e exportação ===== */
 .statusBtn {
     padding: 5px 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     color: #111;
+}
+
+/* Novas cores para Disponível e Emprestado */
+.status-disponivel {
+    background-color: #7bed9f; /* verde claro */
+}
+
+.status-emprestado {
+    background-color: #ff7675; /* vermelho suave */
 }
 
 .exportBtn {
@@ -154,11 +256,12 @@ td.matricula {
     font-weight: bold;
     transition: 0.3s;
 }
+
 .exportBtn:hover {
     background: #74b9ff;
 }
 
-/* ===== SCROLL E RESPONSIVIDADE ===== */
+/* ===== Scroll e Responsividade ===== */
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -174,18 +277,25 @@ td.matricula {
 @media (max-width: 900px) {
     main {
         flex-direction: column;
-        align-items: stretch;
+        align-items: center;
     }
+
     #estoque {
         width: 100%;
         position: relative;
+        left: 0;
+        top: 0;
     }
-    header img.logo {
-        position: static;
+
+    form {
+        margin-left: 0;
     }
+
+    header img.logo,
     header button {
         position: static;
     }
+
     header {
         flex-direction: column;
     }
