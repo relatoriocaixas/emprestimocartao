@@ -11,6 +11,9 @@ body {
     background-color: #1E1E1E;
     color: #E0E0E0;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* centraliza formulário e título */
     padding: 20px;
 }
 
@@ -21,10 +24,11 @@ header {
     gap: 15px;
     width: 100%;
     max-width: 1200px;
-    padding: 20px 30px;
+    padding: 20px;
     background-color: #2A2A2A;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    margin-bottom: 25px;
 }
 
 header img.logo {
@@ -35,14 +39,16 @@ header h1 {
     flex-grow: 1;
     font-size: 2rem;
     color: #00ff7f;
-    text-align: center;
+    text-align: center; /* título centralizado */
     background-color: #222;
     padding: 10px 20px;
     border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 header button {
-    padding: 8px 16px;
+    padding: 8px 14px;
     border-radius: 6px;
     border: none;
     cursor: pointer;
@@ -56,31 +62,90 @@ header button:hover {
     filter: brightness(1.1);
 }
 
-/* ===== Layout Principal ===== */
+/* ===== Formulário ===== */
+form {
+    background-color: #2A2A2A;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    width: 100%;
+    max-width: 650px;
+    margin-bottom: 40px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #00ff7f;
+}
+
+.form-group input,
+.form-group select {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #00B070;
+    background-color: #1E1E1E;
+    color: #E0E0E0;
+    font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #00D080;
+    box-shadow: 0 0 5px rgba(0,176,112,0.7);
+}
+
+/* ===== Botão salvar ===== */
+button#salvarBtn {
+    padding: 12px;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    background-color: #00ff7f;
+    color: #1E1E1E;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button#salvarBtn::before {
+    content: "💾 ";
+}
+
+button#salvarBtn:hover {
+    filter: brightness(1.2) scale(1.02);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+
+/* Campos dinâmicos */
+#digiconField,
+#prodataField,
+#meiaViagemField {
+    display: none;
+}
+
+/* ===== Layout principal ===== */
 main {
     display: flex;
     gap: 20px;
     width: 100%;
     max-width: 1200px;
-    margin-top: 20px;
     align-items: flex-start;
 }
 
-/* ===== Estoque ===== */
+/* Estoque */
 #estoque {
+    margin-left: 0;
     flex-shrink: 0;
     width: 260px;
-    background: #1e1e1e;
-    padding: 15px;
-    border-radius: 10px;
-    color: #e0e0e0;
-    height: fit-content;
-}
-
-#estoque h2 {
-    color: #00ff7f;
-    font-size: 1.1rem;
-    margin-bottom: 10px;
 }
 
 #estoqueConteudo {
@@ -110,6 +175,7 @@ main {
     text-shadow: 1px 1px 2px rgba(255,255,255,0.2);
 }
 
+/* Bordos com cores novas */
 .cardEstoque:nth-child(1) h3 { color: #FFD700; }
 .cardEstoque:nth-child(2) h3 { color: #00FF7F; }
 .cardEstoque:nth-child(3) h3 { color: #87CEFA; }
@@ -117,72 +183,6 @@ main {
 .cardEstoque p b { color: #FFFFFF; text-shadow: 0 0 2px rgba(255,255,255,0.5); }
 .cardEstoque p b.disponivel { color: #00CED1; }
 .cardEstoque p b.emprestado { color: #FF6347; }
-
-/* ===== Formulário ===== */
-form {
-    background-color: #2A2A2A;
-    padding: 30px 40px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
-    width: 100%;
-    max-width: 650px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.form-group {
-    margin-bottom: 18px;
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group label {
-    margin-bottom: 6px;
-    font-weight: bold;
-    color: #00ff7f;
-}
-
-.form-group input,
-.form-group select {
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #00B070;
-    background-color: #1E1E1E;
-    color: #E0E0E0;
-    font-size: 1rem;
-}
-
-.form-group input:focus,
-.form-group select:focus {
-    outline: none;
-    border-color: #00D080;
-    box-shadow: 0 0 5px rgba(0,176,112,0.7);
-}
-
-/* Botão Salvar */
-button#salvarBtn {
-    padding: 12px;
-    width: 100%;
-    border: none;
-    border-radius: 10px;
-    background-color: #00ff7f;
-    color: #1E1E1E;
-    font-weight: bold;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-button#salvarBtn::before { content: "💾 "; }
-button#salvarBtn:hover {
-    filter: brightness(1.2) scale(1.02);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
-}
-
-/* Campos dinâmicos */
-#digiconField,
-#prodataField,
-#meiaViagemField { display: none; }
 
 /* ===== Relatório ===== */
 .exportBtn {
@@ -195,14 +195,12 @@ button#salvarBtn:hover {
     cursor: pointer;
     font-weight: bold;
     transition: 0.3s;
-    margin-left: 310px; /* distância do estoque */
+    margin-left: 280px; /* ajusta posição para não sobrepor estoque */
 }
-
-.exportBtn:hover { background: #74b9ff; }
 
 table {
     flex: 1;
-    margin-left: 310px; /* distância do estoque */
+    margin-left: 280px; /* posiciona relatório mais à esquerda, sem sobrepor estoque */
     border-collapse: collapse;
     background: #1f1f1f;
     border-radius: 8px;
@@ -211,32 +209,27 @@ table {
 }
 
 th, td {
-    padding: 6px 18px;
+    padding: 6px 15px; /* diminui altura das linhas */
     text-align: left;
     border-bottom: 1px solid #333;
-    font-size: 0.92rem;
+    font-size: 0.95rem;
     color: #e0e0e0;
-    white-space: nowrap;
 }
 
-tr:hover { background-color: #2a2a2a; }
+th {
+    background-color: #00b894;
+    color: #111;
+}
+
+tr:hover { background-color: #333; }
 
 td.matricula { font-weight: bold; text-align: center; }
 
 /* ===== Responsivo ===== */
 @media (max-width: 900px) {
-    header h1 {
-        font-size: 1.7rem;
-        padding: 8px 15px;
-    }
-
     header img.logo { height: 60px; }
-
-    form { max-width: 90%; padding: 20px; }
-}
-
-@media (max-width: 650px) {
+    header h1 { font-size: 1.8rem; padding: 8px 15px; }
+    .exportBtn, table { margin-left: 0; }
     main { flex-direction: column; align-items: center; }
     #estoque { width: 100%; margin-bottom: 20px; }
-    table, .exportBtn { margin-left: 0; width: 100%; }
 }
