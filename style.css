@@ -1,4 +1,4 @@
-﻿/* Reset básico */
+﻿/* RESET GERAL */
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +6,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Corpo */
+/* CORPO */
 body {
     background-color: #1E1E1E;
     color: #E0E0E0;
@@ -17,16 +17,16 @@ body {
     padding: 20px;
 }
 
-/* Cabeçalho */
+/* CABEÇALHO */
 header {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 15px;
     width: 100%;
-    max-width: 1100px; /* aumentamos para expandir horizontalmente */
-    margin-left: 150px; /* empurra o bloco (título + botões) mais para o centro */
-    padding: 20px 30px;
+    max-width: 1200px; /* mais largo */
+    margin-left: 250px; /* empurra o bloco bem mais à direita */
+    padding: 20px 40px;
     background-color: #2A2A2A;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.5);
@@ -40,7 +40,7 @@ header img.logo {
 }
 
 header h1 {
-    font-size: 1.8rem;
+    font-size: 1.9rem;
     color: #00ff7f;
     text-align: center;
     margin: 0 auto;
@@ -64,7 +64,7 @@ header button:hover {
     filter: brightness(1.1);
 }
 
-/* Formulário */
+/* FORMULÁRIO */
 form {
     background-color: #2A2A2A;
     padding: 25px 30px;
@@ -76,7 +76,7 @@ form {
     margin-left: 280px;
 }
 
-/* Form groups */
+/* CAMPOS */
 .form-group {
     margin-bottom: 15px;
     display: flex;
@@ -106,7 +106,7 @@ form {
     box-shadow: 0 0 5px rgba(0,176,112,0.7);
 }
 
-/* Botão salvar */
+/* BOTÃO SALVAR */
 button#salvarBtn {
     padding: 12px;
     width: 100%;
@@ -129,25 +129,25 @@ button#salvarBtn:hover {
     box-shadow: 0 4px 12px rgba(0,0,0,0.6);
 }
 
-/* Campos dinâmicos */
+/* CAMPOS DINÂMICOS */
 #digiconField,
 #prodataField,
 #meiaViagemField {
     display: none;
 }
 
-/* Layout principal */
+/* LAYOUT GERAL */
 main {
     display: flex;
     gap: 20px;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0;
     padding: 0;
     align-items: flex-start;
 }
 
-/* Estoque */
+/* ESTOQUE */
 #estoque {
     margin-left: 0;
     flex-shrink: 0;
@@ -160,7 +160,7 @@ main {
     gap: 10px;
 }
 
-/* Cards */
+/* CARDS */
 .cardEstoque {
     background: linear-gradient(145deg, #2a2a2a, #232323);
     border-radius: 10px;
@@ -209,8 +209,8 @@ main {
 
 /* ====== RELATÓRIO ====== */
 table {
-    width: 95%; /* mais largo horizontalmente */
-    margin: 30px auto; /* centraliza horizontalmente */
+    width: 98%; /* ainda mais largo horizontalmente */
+    margin: 30px auto;
     border-collapse: collapse;
     background-color: #2A2A2A;
     border-radius: 10px;
@@ -221,31 +221,38 @@ table {
 table thead th {
     background-color: #00ff7f;
     color: #1E1E1E;
-    padding: 10px 18px; /* menor altura */
+    padding: 6px 22px; /* bem menor altura */
     text-align: left;
     font-size: 1rem;
     text-shadow: 1px 1px 2px rgba(255,255,255,0.2);
 }
 
 table tbody td {
-    padding: 8px 18px; /* linhas mais baixas */
+    padding: 5px 22px; /* linhas mais baixas */
     border-bottom: 1px solid #333;
     word-break: break-word;
+    font-size: 0.95rem;
 }
 
-/* Colunas mais proporcionais */
-table td:nth-child(1) { width: 10%; }
-table td:nth-child(2) { width: 10%; }
-table td:nth-child(3) { width: 28%; }
-table td:nth-child(4) { width: 16%; }
+/* Colunas mais largas e equilibradas */
+table td:nth-child(1) { width: 8%; }
+table td:nth-child(2) { width: 8%; }
+table td:nth-child(3) { width: 30%; } /* nome mais largo */
+table td:nth-child(4) { width: 18%; }
 table td:nth-child(5) { width: 18%; }
 table td:nth-child(6) { width: 18%; }
 
-/* Responsivo */
+/* RESPONSIVO */
 @media (max-width: 650px) {
     form {
         padding: 15px 20px;
         margin-left: 0;
+    }
+
+    header {
+        margin-left: 0;
+        flex-direction: column;
+        text-align: center;
     }
 
     header h1 {
@@ -254,6 +261,7 @@ table td:nth-child(6) { width: 18%; }
 
     header img.logo {
         height: 40px;
+        position: static;
     }
 
     main {
