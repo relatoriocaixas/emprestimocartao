@@ -74,7 +74,7 @@ form {
     width: 100%;
     max-width: 650px;
     margin-bottom: 40px;
-    margin-left: 0; /* puxado para a esquerda */
+    margin: 0 auto; /* 🔹 centraliza horizontalmente */ 
 }
 
 .form-group {
