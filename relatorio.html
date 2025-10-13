@@ -4,22 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Relatório de Empréstimos</title>
-<link rel="stylesheet" href="style.css">
 
-<!-- Favicon -->
-<link rel="icon" href="favicon.ico" type="image/x-icon">
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-
-<!-- Firebase SDKs -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
-
-<!-- SheetJS confiável -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.20.9/xlsx.full.min.js" defer></script>
-
+<!-- CSS básico -->
 <style>
-/* Seu CSS permanece o mesmo */
 body { background-color: #121212; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #e0e0e0; margin: 0; padding: 20px; }
 header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
 header img.logo { height: 50px; }
@@ -39,6 +26,13 @@ tr:hover { background-color: #333; }
 .exportBtn { margin-bottom:10px; padding:8px 15px; background:#0984e3; color:#fff; border:none; border-radius:5px; cursor:pointer; }
 td.matricula { font-weight: bold; text-align: center; }
 </style>
+
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+<!-- SheetJS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.20.9/xlsx.full.min.js" defer></script>
 </head>
 <body>
 
@@ -77,26 +71,118 @@ td.matricula { font-weight: bold; text-align: center; }
     </div>
 </main>
 
-<script src="firebaseConfig.js"></script>
 <script>
-document.addEventListener("DOMContentLoaded", async () => {
-    // Atualizar estoque e tabela
+  // Inicialize Firebase
+  const firebaseConfig = {
+    apiKey: "SEU_API_KEY",
+    authDomain: "SEU_PROJECT_ID.firebaseapp.com",
+    projectId: "SEU_PROJECT_ID",
+    storageBucket: "SEU_PROJECT_ID.appspot.com",
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+
+  async function atualizarEstoque() {
+    const estoqueDiv = document.getElementById("estoqueConteudo");
+    estoqueDiv.innerHTML = "Atualizando...";
+
+    const total = { digicon: 10, prodata: 15, meiaViagem: 10 };
+    const emprestados = { digicon: [], prodata: [], meiaViagem: [] };
+
+    const snapshot = await db.collection("emprestimos")
+      .where("status", "==", "em aberto")
+      .get();
+
+    snapshot.forEach(doc => {
+      const data = doc.data();
+      if (data.tipoCartao === "digicon" && data.numBordoDigicon)
+        emprestados.digicon.push(Number(data.numBordoDigicon));
+      if (data.tipoCartao === "prodata" && data.numBordoProdata)
+        emprestados.prodata.push(Number(data.numBordoProdata));
+      if (data.numMeiaViagem)
+        emprestados.meiaViagem.push(Number(data.numMeiaViagem));
+    });
+
+    function gerarLista(tipo) {
+      const todos = Array.from({ length: total[tipo] }, (_, i) => i + 1);
+      const disponiveis = todos.filter(n => !emprestados[tipo].includes(n));
+      return `
+        <div class="cardEstoque">
+            <h3>${tipo === 'digicon' ? 'Bordo Digicon' : tipo === 'prodata' ? 'Bordo Prodata' : 'Meia Viagem'}</h3>
+            <p><b>Disponível:</b> ${disponiveis.length}</p>
+            <p><b>Emprestado:</b> ${emprestados[tipo].length}</p>
+            <p><b>Disponíveis:</b> ${disponiveis.join(', ') || '-'}</p>
+            <p><b>Emprestados:</b> ${emprestados[tipo].join(', ') || '-'}</p>
+        </div>`;
+    }
+
+    estoqueDiv.innerHTML =
+      gerarLista("digicon") +
+      gerarLista("prodata") +
+      gerarLista("meiaViagem");
+  }
+
+  document.addEventListener("DOMContentLoaded", async () => {
     await atualizarEstoque();
 
     const tbody = document.getElementById("relatorioBody");
     const table = document.getElementById("relatorioTable");
     const exportBtn = document.getElementById("exportExcelBtn");
+    const snapshot = await db.collection("emprestimos").orderBy("timestamp","desc").get();
 
-    // Exportar Excel
-    exportBtn.addEventListener("click", () => {
-        if (typeof XLSX === "undefined") {
-            alert("Erro: SheetJS não carregado!");
-            return;
-        }
-        const wb = XLSX.utils.table_to_book(table, { sheet: "Relatorio" });
-        XLSX.writeFile(wb, `Relatorio_Emprestimos_${new Date().toLocaleDateString()}.xlsx`);
+    let matriculaCount = {};
+
+    snapshot.forEach(doc => {
+      const data = doc.data();
+      matriculaCount[data.matriculaMotorista] = (matriculaCount[data.matriculaMotorista] || 0) + 1;
+
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${data.nomeMotorista}</td>
+        <td class="matricula">${data.matriculaMotorista}</td>
+        <td>${data.tipoCartao}</td>
+        <td>${data.numBordoDigicon || '-'}</td>
+        <td>${data.numBordoProdata || '-'}</td>
+        <td>${data.numMeiaViagem || '-'}</td>
+        <td>${data.motivo}</td>
+        <td>${data.matriculaEmpresto}</td>
+        <td>${data.dataRetirada}</td>
+        <td>${data.prazoDevolucao || '-'}</td>
+        <td>
+          <button class="statusBtn" style="background:${data.status === 'em aberto' ? '#ff5555' : '#55ff55'};">
+            ${data.status}
+          </button>
+        </td>`;
+
+      const statusBtn = tr.querySelector(".statusBtn");
+      statusBtn.addEventListener("click", async () => {
+        const novoStatus = data.status === "em aberto" ? "resolvido" : "em aberto";
+        await db.collection("emprestimos").doc(doc.id).update({ status: novoStatus });
+        data.status = novoStatus;
+        statusBtn.textContent = novoStatus;
+        statusBtn.style.background = novoStatus === "em aberto" ? "#ff5555" : "#55ff55";
+        await atualizarEstoque();
+      });
+
+      tbody.appendChild(tr);
     });
-});
+
+    Array.from(document.querySelectorAll("td.matricula")).forEach(td => {
+      const count = matriculaCount[td.textContent];
+      if(count === 2) td.style.backgroundColor = "#f9e79f";
+      else if(count === 3) td.style.backgroundColor = "#f5b041";
+      else if(count >=4) td.style.backgroundColor = "#e74c3c";
+    });
+
+    exportBtn.addEventListener("click", () => {
+      if (typeof XLSX === "undefined") {
+        alert("Erro: SheetJS não carregado!");
+        return;
+      }
+      const wb = XLSX.utils.table_to_book(table, { sheet: "Relatorio" });
+      XLSX.writeFile(wb, `Relatorio_Emprestimos_${new Date().toLocaleDateString()}.xlsx`);
+    });
+  });
 </script>
 
 </body>
