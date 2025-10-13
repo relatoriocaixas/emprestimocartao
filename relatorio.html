@@ -138,10 +138,10 @@ async function atualizarEstoque() {
         return `
             <div class="cardEstoque">
                 <h3>${tipo === 'digicon' ? 'Bordo Digicon' : tipo === 'prodata' ? 'Bordo Prodata' : 'Meia Viagem'}</h3>
-                <p><b>Disponível:</b> ${disponiveis.length}</p>
-                <p><b>Emprestado:</b> ${emprestados[tipo].length}</p>
-                <p><b>Disponíveis:</b> ${disponiveis.join(', ') || '-'}</p>
-                <p><b>Emprestados:</b> ${emprestados[tipo].join(', ') || '-'}</p>
+                <p><b>Qtd. Disponível:</b> ${disponiveis.length}</p>
+                <p><b>Qtd. Emprestado:</b> ${emprestados[tipo].length}</p>
+                <p><b>N° Disponíveis:</b> ${disponiveis.join(', ') || '-'}</p>
+                <p><b>N° Emprestados:</b> ${emprestados[tipo].join(', ') || '-'}</p>
             </div>`;
     }
 
