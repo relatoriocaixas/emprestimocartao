@@ -194,11 +194,28 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
 
         Array.from(document.querySelectorAll("td.matricula")).forEach(td => {
-            const count = matriculaCount[td.textContent];
-            if(count === 2) td.style.backgroundColor = "#f9e79f";
-            else if(count === 3) td.style.backgroundColor = "#f5b041";
-            else if(count >=4) td.style.backgroundColor = "#e74c3c";
-        });
+    const count = matriculaCount[td.textContent];
+    if(count === 2) {
+        td.style.backgroundColor = "#f9e79f";
+        td.style.color = "#000";        // texto escuro para contraste
+        td.style.fontWeight = "bold";   // negrito
+    } 
+    else if(count === 3) {
+        td.style.backgroundColor = "#f5b041";
+        td.style.color = "#000";
+        td.style.fontWeight = "bold";
+    } 
+    else if(count >= 4) {
+        td.style.backgroundColor = "#e74c3c";
+        td.style.color = "#fff";        // texto branco para contraste
+        td.style.fontWeight = "bold";
+    } 
+    else {
+        td.style.backgroundColor = "";  // volta ao normal se tiver 1 empréstimo
+        td.style.color = "#e0e0e0";
+        td.style.fontWeight = "normal";
+    }
+});
 
     } catch (err) {
         console.error("Erro ao carregar relatório:", err);
