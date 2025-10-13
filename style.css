@@ -221,12 +221,12 @@ table {
 }
 
 th, td {
-    padding: 2px 20px; /* diminui altura das linhas */
+    padding: 2px 15px; /* diminui altura das linhas */
     text-align: left;
     border-bottom: 1px solid #333;
     font-size: 0.95rem;
     color: #e0e0e0;
-    min-width: 150px; /* largura mínima de cada célula para ficarem mais compridas */
+    min-width: 140px; /* largura mínima de cada célula para ficarem mais compridas */
 }
 
 th {
