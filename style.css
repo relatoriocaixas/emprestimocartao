@@ -249,3 +249,7 @@ td.matricula { font-weight: bold; text-align: center; }
 #estoque h2 {
     color: #00ff7f; /* define a cor verde metálico */
 }
+
+.statusBtn {
+    font-weight: bold; /* texto em negrito */
+}
