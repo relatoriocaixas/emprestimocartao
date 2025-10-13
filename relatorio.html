@@ -15,8 +15,8 @@
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
 
-<!-- SheetJS para exportar Excel -->
-<script src="https://cdn.sheetjs.com/xlsx-0.20.9/package/dist/xlsx.full.min.js"></script>
+<!-- SheetJS confiável -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.20.9/xlsx.full.min.js"></script>
 
 <style>
 body {
@@ -34,83 +34,42 @@ header {
 }
 header img.logo { height: 50px; }
 header h1 { flex-grow:1; font-size: 1.5rem; color: #00ff7f; }
-header button { padding:5px 10px; border-radius:5px; border:none; cursor:pointer; background:#00ff7f; color:#111; }
-
-main {
-    display: flex;
-    gap: 20px;
+header button {
+    padding:5px 10px; border-radius:5px; border:none;
+    cursor:pointer; background:#00ff7f; color:#111;
 }
-
+main { display: flex; gap: 20px; }
 #estoque {
-    width: 260px;
-    background: #1e1e1e;
-    padding: 15px;
-    border-radius: 10px;
-    color: #e0e0e0;
+    width: 260px; background: #1e1e1e;
+    padding: 15px; border-radius: 10px; color: #e0e0e0;
     height: fit-content;
 }
-
-#estoque h2 {
-    color: #00ff7f;
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-}
-
+#estoque h2 { color: #00ff7f; font-size: 1.1rem; margin-bottom: 10px; }
 .cardEstoque {
-    background: #2a2a2a;
-    border-radius: 8px;
-    padding: 10px;
-    margin-bottom: 10px;
+    background: #2a2a2a; border-radius: 8px;
+    padding: 10px; margin-bottom: 10px;
 }
-
-.cardEstoque h3 {
-    margin: 0;
-    font-size: 1rem;
-    color: #00b894;
-}
-
-.cardEstoque p {
-    margin: 3px 0;
-    font-size: 0.9rem;
-}
-
+.cardEstoque h3 { margin: 0; font-size: 1rem; color: #00b894; }
+.cardEstoque p { margin: 3px 0; font-size: 0.9rem; }
 table {
-    flex: 1;
-    width: 100%;
-    border-collapse: collapse;
-    background: #1f1f1f;
-    border-radius: 8px;
-    overflow: hidden;
+    flex: 1; width: 100%; border-collapse: collapse;
+    background: #1f1f1f; border-radius: 8px; overflow: hidden;
 }
 th, td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #333;
-    font-size: 0.95rem;
-    color: #e0e0e0;
+    padding: 10px; text-align: left; border-bottom: 1px solid #333;
+    font-size: 0.95rem; color: #e0e0e0;
 }
 th { background-color: #00ff7f; color: #111; }
 tr:hover { background-color: #333; }
 .statusBtn {
-    padding:5px 25px;
-    border:none;
-    border-radius:5px;
-    cursor:pointer;
-    color:#111;
+    padding:5px 25px; border:none; border-radius:5px;
+    cursor:pointer; color:#111; font-weight: bold;
 }
 .exportBtn {
-    margin-bottom:10px;
-    padding:8px 15px;
-    background:#0984e3;
-    color:#fff;
-    border:none;
-    border-radius:5px;
-    cursor:pointer;
+    margin-bottom:10px; padding:8px 15px;
+    background:#0984e3; color:#fff; border:none; border-radius:5px; cursor:pointer;
 }
-td.matricula {
-    font-weight: bold;
-    text-align: center;
-}
+td.matricula { font-weight: bold; text-align: center; }
 </style>
 </head>
 <body>
@@ -203,7 +162,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         const snapshot = await db.collection("emprestimos").orderBy("timestamp","desc").get();
         snapshot.forEach(doc => {
             const data = doc.data();
-
             matriculaCount[data.matriculaMotorista] = (matriculaCount[data.matriculaMotorista] || 0) + 1;
 
             const tr = document.createElement("tr");
@@ -224,7 +182,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                     </button>
                 </td>
             `;
-
             const statusBtn = tr.querySelector(".statusBtn");
             statusBtn.addEventListener("click", async () => {
                 const novoStatus = data.status === "em aberto" ? "resolvido" : "em aberto";
@@ -233,7 +190,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                 statusBtn.textContent = novoStatus;
                 statusBtn.style.background = novoStatus === "em aberto" ? "#ff5555" : "#55ff55";
             });
-
             tbody.appendChild(tr);
         });
 
@@ -250,12 +206,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     // Exportar Excel
-    document.getElementById("exportExcelBtn").addEventListener("click", () => {
+    const exportBtn = document.getElementById("exportExcelBtn");
+    exportBtn.addEventListener("click", () => {
         if(typeof XLSX === "undefined") {
             alert("Erro: SheetJS não carregado!");
             return;
         }
-        const wb = XLSX.utils.table_to_book(table, {sheet:"Relatorio"});
+        const wb = XLSX.utils.table_to_book(table, { sheet: "Relatorio" });
         XLSX.writeFile(wb, `Relatorio_Emprestimos_${new Date().toLocaleDateString()}.xlsx`);
     });
 });
