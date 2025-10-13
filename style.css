@@ -73,8 +73,9 @@ form {
     box-shadow: 0 4px 12px rgba(0,0,0,0.6);
     width: 100%;
     max-width: 650px;
-    margin-bottom: 40px;
-    margin-left: 250px; /* 🔹 ajusta para a direita (aumente ou diminua o valor) */
+
+    /* 🔹 desloca o formulário para a direita */
+    margin-left: 300px; /* ajuste esse valor conforme quiser */
 }
 
 .form-group {
