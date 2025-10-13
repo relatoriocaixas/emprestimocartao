@@ -74,8 +74,8 @@ form {
     width: 100%;
     max-width: 650px;
 
-    /* 🔹 empurra o formulário para a direita dentro do flex */
-    margin-left: auto;
+    /* 🔹 desloca o formulário para a direita */
+    margin-left: 400px; /* ajuste esse valor conforme quiser */
 }
 
 .form-group {
