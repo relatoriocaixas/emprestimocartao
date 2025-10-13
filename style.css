@@ -221,7 +221,7 @@ table {
 }
 
 th, td {
-    padding: 4px 25px; /* diminui altura das linhas */
+    padding: 2px 20px; /* diminui altura das linhas */
     text-align: left;
     border-bottom: 1px solid #333;
     font-size: 0.95rem;
