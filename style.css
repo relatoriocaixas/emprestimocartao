@@ -147,7 +147,7 @@ main {
 
 /* Estoque */
 #estoque {
-    margin-left: auto; /* colado na margem direita */
+    margin-right: auto; /* 🔹 agora colado na margem esquerda */
     flex-shrink: 0;
     width: 260px;
 }
@@ -178,6 +178,7 @@ main {
     font-weight: bold;
     text-shadow: 1px 1px 2px rgba(255,255,255,0.2);
 }
+
 
 /* Bordos com cores novas */
 .cardEstoque:nth-child(1) h3 { color: #FFD700; }
