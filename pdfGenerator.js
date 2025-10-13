@@ -73,10 +73,10 @@ async function gerarPDF_A4(dados) {
     doc.text("Assinatura Motorista: ____________________", margem, y);
     y += 10;
     doc.text("Assinatura Recebedoria: ____________________", margem, y);
-    y += 20;
+    y += 30;
 
     doc.setTextColor(255, 0, 0);
-    doc.text("⚠ A não devolução no prazo acarretará medidas disciplinares.", margem, y);
+    doc.text("A não devolução no prazo acarretará em medidas disciplinares.", margem, y);
 
     // Rodapé
     y = 280;
