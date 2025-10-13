@@ -253,3 +253,12 @@ td.matricula { font-weight: bold; text-align: center; }
 .statusBtn {
     font-weight: bold; /* texto em negrito */
 }
+
+.footer {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    color: #888;          /* cor discreta */
+    font-size: 0.9rem;
+    margin-top: 20px;
+}
