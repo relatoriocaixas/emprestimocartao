@@ -71,7 +71,7 @@ async function gerarPDF_A4(dados) {
     y += 20;
 
     doc.text("Assinatura Motorista: ____________________", margem, y);
-    y += 10;
+    y += 25;
     doc.text("Assinatura Recebedoria: ____________________", margem, y);
     y += 30;
 
