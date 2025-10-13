@@ -20,7 +20,7 @@
         const estoqueDiv = document.getElementById("estoqueConteudo");
         estoqueDiv.innerHTML = "Atualizando...";
 
-        const total = { digicon: 15, prodata: 15, meiaViagem: 10 };
+        const total = { digicon: 10, prodata: 15, meiaViagem: 10 };
         const emprestados = { digicon: [], prodata: [], meiaViagem: [] };
 
         const snapshot = await db.collection("emprestimos")
