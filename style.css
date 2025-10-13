@@ -148,9 +148,14 @@ main {
 
 /* Estoque */
 #estoque {
-    margin-right: auto; /* 🔹 agora colado na margem esquerda */
+    margin-right: auto; /* colado na margem esquerda */
     flex-shrink: 0;
     width: 260px;
+    background: #1e1e1e;       /* fundo igual do relatório */
+    padding: 15px;             /* espaço interno igual */
+    border-radius: 10px;       /* borda arredondada igual */
+    color: #e0e0e0;
+    height: fit-content;       /* altura ajusta ao conteúdo */
 }
 
 #estoqueConteudo {
