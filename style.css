@@ -13,12 +13,8 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center; /* Centraliza todo o conteúdo principal */
     padding: 20px;
-
-    /* 🔹 Escala geral reduzida (equivalente a ~75%) */
-    transform: scale(0.75);
-    transform-origin: top left;
 }
 
 /* ===== Cabeçalho ===== */
@@ -33,25 +29,22 @@ header {
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.5);
     margin-bottom: 25px;
-
-    /* 🔹 Adiciona deslocamento para a direita */
-    margin-left: 350px;
+    justify-content: space-between; /* mantém proporção entre logo, título e botão */
 }
 
 header img.logo {
-    height: 70px; /* logo maior */
+    height: 70px;
 }
 
 header h1 {
     flex-grow: 1;
     font-size: 2rem;
     color: #00ff7f;
-    text-align: center; /* título centralizado */
+    text-align: center;
     background-color: #222;
     padding: 10px 20px;
     border-radius: 10px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
 }
 
 header button {
@@ -77,9 +70,7 @@ form {
     box-shadow: 0 4px 12px rgba(0,0,0,0.6);
     width: 100%;
     max-width: 650px;
-
-    /* 🔹 desloca o formulário para a direita */
-    margin-left: 400px; /* ajuste esse valor conforme quiser */
+    margin: 0 auto; /* centraliza automaticamente */
 }
 
 .form-group {
@@ -152,14 +143,14 @@ main {
 
 /* Estoque */
 #estoque {
-    margin-right: auto; /* colado na margem esquerda */
+    margin-right: auto;
     flex-shrink: 0;
     width: 260px;
-    background: #1e1e1e;       /* fundo igual do relatório */
-    padding: 15px;             /* espaço interno igual */
-    border-radius: 10px;       /* borda arredondada igual */
+    background: #1e1e1e;
+    padding: 15px;
+    border-radius: 10px;
     color: #e0e0e0;
-    height: fit-content;       /* altura ajusta ao conteúdo */
+    height: fit-content;
 }
 
 #estoqueConteudo {
@@ -189,7 +180,6 @@ main {
     text-shadow: 1px 1px 2px rgba(255,255,255,0.2);
 }
 
-
 /* Bordos com cores novas */
 .cardEstoque:nth-child(1) h3 { color: #FFD700; }
 .cardEstoque:nth-child(2) h3 { color: #00FF7F; }
@@ -214,23 +204,23 @@ main {
 
 table {
     flex: 1;
-    margin-left: 0; /* relatório puxado para a esquerda */
+    margin-left: 0;
     border-collapse: collapse;
     background: #1f1f1f;
     border-radius: 8px;
     overflow: hidden;
     margin-top: 20px;
-    table-layout: auto; /* deixa colunas se expandirem conforme conteúdo */
-    width: 100%; /* ocupa toda a largura disponível do container */
+    table-layout: auto;
+    width: 100%;
 }
 
 th, td {
-    padding: 2px 15px; /* diminui altura das linhas */
+    padding: 2px 15px;
     text-align: left;
     border-bottom: 1px solid #333;
     font-size: 0.95rem;
     color: #e0e0e0;
-    min-width: 140px; /* largura mínima de cada célula para ficarem mais compridas */
+    min-width: 140px;
 }
 
 th {
@@ -243,26 +233,33 @@ tr:hover { background-color: #333; }
 td.matricula { font-weight: bold; text-align: center; }
 
 /* ===== Responsivo ===== */
+@media (max-width: 1200px) {
+    body { font-size: 0.95rem; }
+    header h1 { font-size: 1.7rem; }
+}
+
 @media (max-width: 900px) {
-    header img.logo { height: 60px; }
-    header h1 { font-size: 1.8rem; padding: 8px 15px; }
-    main { flex-direction: column; align-items: flex-start; }
-    #estoque { width: 100%; margin-top: 20px; margin-left: 0; }
+    main { flex-direction: column; align-items: center; }
+    #estoque { width: 100%; margin: 0; }
+    form, header { width: 95%; margin: 0 auto; }
 }
 
-#estoque h2 {
-    color: #00ff7f; /* define a cor verde metálico */
+@media (max-width: 600px) {
+    header img.logo { height: 50px; }
+    header h1 { font-size: 1.5rem; padding: 6px 12px; }
+    form { padding: 20px; }
 }
 
-.statusBtn {
-    font-weight: bold; /* texto em negrito */
-}
+/* ===== Outros ===== */
+#estoque h2 { color: #00ff7f; }
+
+.statusBtn { font-weight: bold; }
 
 .footer {
     width: 100%;
     text-align: center;
     padding: 10px 0;
-    color: #888;          /* cor discreta */
+    color: #888;
     font-size: 0.9rem;
     margin-top: 20px;
 }
