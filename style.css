@@ -9,12 +9,13 @@
 /* ===== Corpo ===== */
 body {
     background-color: #121212;
-    color: #E0E0E0;
-    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* conteúdo todo para a esquerda */
-    padding: 20px;
+    align-items: center; /* Centraliza tudo horizontalmente */
 }
 
 /* ===== Cabeçalho ===== */
@@ -141,9 +142,10 @@ button#salvarBtn:hover {
 main {
     display: flex;
     gap: 20px;
+    justify-content: center; /* Centraliza os elementos do main */
+    flex-wrap: wrap; /* Quebra para nova linha em telas pequenas */
     width: 100%;
-    max-width: 1200px;
-    align-items: flex-start;
+    max-width: 1200px; /* Mantém limite de largura */
 }
 
 /* Estoque */
@@ -226,7 +228,7 @@ th, td {
     border-bottom: 1px solid #333;
     font-size: 0.95rem;
     color: #e0e0e0;
-    min-width: 140px; /* largura mínima de cada célula para ficarem mais compridas */
+    min-width: 120px; /* largura mínima de cada célula para ficarem mais compridas */
 }
 
 th {
