@@ -42,31 +42,24 @@
             const disponiveis = todos.filter(n => !emprestados[tipo].includes(n));
 
             // Preenche os selects
-            if (tipo === "digicon") {
-                numBordoDigiconSelect.innerHTML = "";
-                disponiveis.forEach(n => {
-                    const option = document.createElement("option");
-                    option.value = n;
-                    option.textContent = n;
-                    numBordoDigiconSelect.appendChild(option);
-                });
-            } else if (tipo === "prodata") {
-                numBordoProdataSelect.innerHTML = "";
-                disponiveis.forEach(n => {
-                    const option = document.createElement("option");
-                    option.value = n;
-                    option.textContent = n;
-                    numBordoProdataSelect.appendChild(option);
-                });
-            } else if (tipo === "meiaViagem") {
-                numMeiaViagemSelect.innerHTML = "";
-                disponiveis.forEach(n => {
-                    const option = document.createElement("option");
-                    option.value = n;
-                    option.textContent = n;
-                    numMeiaViagemSelect.appendChild(option);
-                });
-            }
+            const select = tipo === "digicon" ? numBordoDigiconSelect
+                         : tipo === "prodata" ? numBordoProdataSelect
+                         : numMeiaViagemSelect;
+
+            select.innerHTML = ""; // limpa
+
+            // Adiciona opção "Selecione"
+            const optDefault = document.createElement("option");
+            optDefault.value = "";
+            optDefault.textContent = "Selecione";
+            select.appendChild(optDefault);
+
+            disponiveis.forEach(n => {
+                const option = document.createElement("option");
+                option.value = n;
+                option.textContent = n;
+                select.appendChild(option);
+            });
 
             // Adiciona classe específica para o título e mantém o layout
             const classTitulo = tipo === 'digicon' ? 'digiconTitle' :
@@ -165,8 +158,19 @@
             if (typeof gerarPDF_Termica === "function") gerarPDF_Termica(dados);
 
             alert("Registro salvo com sucesso!");
+
+            // 🔹 Limpa o formulário e redefine data
             form.reset();
-            dataRetirada.value = hoje.toLocaleDateString("pt-BR");
+            dataRetirada.value = new Date().toLocaleDateString("pt-BR");
+
+            // 🔹 Oculta campos novamente
+            digiconField.style.display = "none";
+            prodataField.style.display = "none";
+            meiaViagemField.style.display = "none";
+
+            // 🔹 Atualiza estoque
+            atualizarEstoque();
+
         } catch (err) {
             console.error("Erro ao salvar:", err);
             alert("Erro ao salvar registro. Veja o console.");
