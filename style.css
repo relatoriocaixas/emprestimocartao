@@ -13,8 +13,12 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* conteúdo todo para a esquerda */
+    align-items: flex-start;
     padding: 20px;
+
+    /* 🔹 Escala geral reduzida (equivalente a ~75%) */
+    transform: scale(0.75);
+    transform-origin: top left;
 }
 
 /* ===== Cabeçalho ===== */
