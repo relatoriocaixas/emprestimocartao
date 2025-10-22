@@ -21,7 +21,7 @@
         if (!estoqueDiv) return;
         estoqueDiv.innerHTML = "Atualizando...";
 
-        const total = { digicon: 10, prodata: 15, meiaViagem: 10 };
+        const total = { digicon: 10, prodata: 13, meiaViagem: 10 };
         const emprestados = { digicon: [], prodata: [], meiaViagem: [] };
 
         try {
