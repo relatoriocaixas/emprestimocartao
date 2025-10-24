@@ -67,16 +67,22 @@ async function gerarPDF_A4(dados) {
     const dataDevolucao = new Date(dataRetirada);
     dataDevolucao.setDate(dataDevolucao.getDate() + dias);
 
-    doc.text(`Data Retirada: ${dados.dataRetirada}    Prazo Devolução: ${dataDevolucao.toLocaleDateString("pt-BR")}`, margem, y);
-    y += 20;
+doc.text(`Data Retirada: ${dados.dataRetirada}    Prazo Devolução: ${dataDevolucao.toLocaleDateString("pt-BR")}`, margem, y);
+y += 20;
 
-    doc.text("Assinatura Motorista: ____________________", margem, y);
-    y += 25;
-    doc.text("Assinatura Recebedoria: ____________________", margem, y);
-    y += 15;
+// === ASSINATURAS ===
+doc.setFont("arial", "normal");
+doc.text("Assinatura Motorista: ____________________", margem, y);
 
-    doc.setTextColor(255, 0, 0);
-    doc.text("A não devolução no prazo acarretará em medidas disciplinares.", margem, y);
+// Adiciona o campo "Assinatura Devolução" à direita
+doc.text("Assinatura Devolução: ____________________", margem + 110, y);
+
+y += 25;
+doc.text("Assinatura Recebedoria: ____________________", margem, y);
+y += 15;
+
+doc.setTextColor(255, 0, 0);
+doc.text("A não devolução no prazo acarretará em medidas disciplinares.", margem, y);
 
     // Rodapé
     y = 280;
